@@ -50,6 +50,7 @@ create database  if not exists empresalum character set ='utf8mb4';
 		destinatario varchar(150) not null,
 		fecha date not null,
 		asunto varchar(150) not null,
+		contenido varchar(255),
 		primary key(idCorreo),
 		foreign key (remitente) references usuario (email) on update cascade on delete restrict,
 		foreign key (destinatario) references usuario (email) on update cascade on delete restrict
@@ -72,8 +73,8 @@ insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion)VALUES ('topete',
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('HugoBoss','The Hugo Boss','Calle de la piruleta','696969696','Hugo Madrid');
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('PatriCons','Patricia consoladores S.A.','Calle de la UCA','969696969','Patricia Barrilado Carranque');
 
-insert into correo(idCorreo,remitente,destinatario,fecha,asunto)values(1,'estebangomezruiz@gmail.com','mariagarciamiralles@gmail.com',20190119,'¿Que pasa paca?');
-insert into correo(idCorreo,remitente,destinatario,fecha,asunto)values(2,'mariagarciamiralles@gmail.com','estebangomezruiz@gmail.com',20190119,'Aburrida');
+insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(1,'estebangomezruiz@gmail.com','mariagarciamiralles@gmail.com',20190119,'¿Que pasa paca?','Esto es el contenido del correo 1');
+insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(2,'mariagarciamiralles@gmail.com','estebangomezruiz@gmail.com',20190119,'Aburrida','Esto es el contenido del correo 2');
 
-insert into correo(idCorreo,remitente,destinatario,fecha,asunto)values(3,'TheHugoBoss@gmail.com','mariagarciamiralles@gmail.com',20190309,'Oferta de trabajo en Mascokotas');
-insert into correo(idCorreo,remitente,destinatario,fecha,asunto)values(4,'PatriciaConsoladoresSA@gmail.com','estebangomezruiz@gmail.com',20190222,'Oferta de trabajo de psicologo');
+insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(3,'TheHugoBoss@gmail.com','mariagarciamiralles@gmail.com',20190309,'Oferta de trabajo en Mascokotas','Esto es el contenido del correo 3');
+insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(4,'PatriciaConsoladoresSA@gmail.com','estebangomezruiz@gmail.com',20190222,'Oferta de trabajo de psicologo','Esto es el contenido del correo 4');

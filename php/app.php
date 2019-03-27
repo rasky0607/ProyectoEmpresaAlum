@@ -94,46 +94,17 @@ function print_head($title="Página SEGEMP"){
           </div>";
         }
 
-         //Funcion que imprime el menú del sitio web
-      function print_nav_empresa(){
-          echo"       
-          <div class=\"p-1 mb-2 bg-success text-white\"/>
-          <nav class=\"navbar navbar-expand-lg navbar-dark\">              
-          <span class=\"navbar-brand mb-0 h1\"><u>Alumnado:</u></span>
-          <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
-              <ul class=\"navbar-nav mr-auto\">
-              <li class=\"nav-item dropdown\">
-              <span class=\"nav-item active\"> <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdownMenuLink\" role=\"button\"
-                   data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                  Gestión de Alumnos
-                  </a></sapn>
-                  <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownMenuLink\">
-                      <a class=\"dropdown-item disabled\" data-toggle=\"modal\" data-target=\"#exampleModal\" href=\"#\">Alta alumno</a>
-                      <a class=\"dropdown-item disabled\" href=\"#\">Editar alumno</a>
-                      <a class=\"dropdown-item\" href=\"consultabsence.php\">Consultar Alumno</a>
-                  </div> 
-                  </li>                                 
-                </li>
-                <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"listabsenceAll.php\">Listado de ausencias <span class=\"sr-only\">(current)</span></a>
-            </li>            
-              </ul>
-             <span class=\"navbar-brand mb-0 h1\"><a class=\"nav-link\" href=\"logout.php\">Cerrar sesión</a></span>
-            </nav> 
-            </div>";   
-          }
+   
     
         //Funcion que imprime el pié de página del sitio Web
       function print_footer(){
        echo "<footer>
-          <h4 class=\"text-center\">Pablo López</h4>
-          <a href='http://dominio.com/aviso-legal'>Política de cookies</a>
-          <h4>Redes sociales</h4>
-          <a href='https://twitter.com/'>Mi Twitter</a>
+          <h5 class=\"text-center\">Pablo López</h5>
+          <a href='http://dominio.com/aviso-legal'>Política de cookies</a>         
         </footer>";
         }
 
-        function print_nav_alumno($user){
+        function print_nav_Alum($user){
           echo"      
           <div class=\"p-1 mb-2 bg-success text-white\"/>
           <nav class=\"navbar navbar-expand-lg navbar-dark\">              
@@ -149,7 +120,7 @@ function print_head($title="Página SEGEMP"){
               </li>
 
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"listabsenceAll.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"plataformaAlum.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
               </li>
           
                     
@@ -159,6 +130,32 @@ function print_head($title="Página SEGEMP"){
             </div>";
           }
   
+
+        function print_nav_Empe($user){
+          echo"      
+          <div class=\"p-1 mb-2 bg-success text-white\"/>
+          <nav class=\"navbar navbar-expand-lg navbar-dark\">              
+          <span class=\"navbar-brand mb-0 h1\"><u>Usuario: $user</u></span>
+          <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
+              <ul class=\"navbar-nav mr-auto\">
+          
+              <li class=\"nav-item active\">
+                  <a class=\"nav-link\" href=\"#\">Buscar un alumno <span class=\"sr-only\">(current)</span></a>
+              </li>
+              <li class=\"nav-item active\">
+                <a class=\"nav-link\" href=\"#\">Correos enviados <span class=\"sr-only\">(current)</span></a>
+              </li>
+
+              <li class=\"nav-item active\">
+                <a class=\"nav-link\" href=\"plataformaEmp.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
+              </li>
+          
+                    
+              </ul>
+             <span class=\"navbar-brand mb-0 h1\"><a class=\"nav-link\" href=\"logout.php\">Cerrar sesión</a></span>
+            </nav> 
+            </div>";
+          }
        
 
 

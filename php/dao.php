@@ -42,6 +42,7 @@ define("CCORREO_REMITENTE","remitente");
 define("CCORREO_DESTINATARIO","destinatario");
 define("CCORREO_FECHA","fecha");
 define("CCORREO_ASUNTO","asunto");
+define("CCORREO_CONTENIDO","contenido");
 //----------------------//
 
 class Dao{
@@ -92,10 +93,13 @@ class Dao{
         }
     }
 
-    function getStudents(){
+    //En base al usuario pasado buscamos su correo y filtramos en la tabla correo
+    //select * from correo where remitente in(select email  from usuario where usuario='Maria') or destinatario in (select email  from usuario where usuario='Maria')order by fecha desc;
+    function getcorreoAlum($user){
         try
         {
-            $sql="SELECT * FROM ".TABLE_STUDENT;
+            //Pendiente de terminar la subconsulta de SQL donde preguntamos por el email del usuario en la tabla usuario
+            $sql="SELECT".CCORREO_ID.",".CCORREO_REMITENTE.",".CCORREO_FECHA.",".CCORREO_ASUNTO."FROM ".TCORREO;
             $resultset=$this->conecxion->query($sql);
             //echo $sql; 
             
