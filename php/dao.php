@@ -12,6 +12,7 @@ define("PASSWORD","123");
 define("TUSUARIO","usuario");
 define("CUSUARIO_NOMBRE","usuario");
 define("CUSUARIO_PASSWORD","password");
+define("CUSUARIO_EMAIL","email");
 define("CUSUARIO_TIPO","tipoUsuario");
 
 //Tabla alumno
@@ -34,8 +35,13 @@ define ("CEMPRESA_TELEFONO","telefono");
 define ("CEMPRESA_email","email");
 define ("CEMPRESA_NOMBRECONTACTO","nombreContacto");
 
-//Tabla CorreosUsuarios
-
+//Tabla Correos
+define("TCORREO","correo");
+define("CCORREO_ID","idCorreo");
+define("CCORREO_REMITENTE","remitente");
+define("CCORREO_DESTINATARIO","destinatario");
+define("CCORREO_FECHA","fecha");
+define("CCORREO_ASUNTO","asunto");
 //----------------------//
 
 class Dao{
