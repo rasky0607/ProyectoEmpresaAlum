@@ -200,11 +200,14 @@ function print_head($title="Página SEGEMP"){
           $this->showLogin();
       }
 
-      //Función que devuelve todos los estudiantes dados de alta
-      function getStudents(){
-          return $this->dao->getStudents();
+      //Función que devuelve todos los correos de un usuario concreto como remitente y detinatario
+      function getcorreo($user){
+          return $this->dao->getcorreo($user);
       }
 
+      function getDetalleDeUnCorreoRecibido($idCorreo){
+        return $this->dao->getDetalleDeUnCorreoRecibido($idCorreo);
+    }
     
 }
 ?>

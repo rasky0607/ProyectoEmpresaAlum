@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
         //Se realiza conecxion a la Base de datos y comprobar si el usuario existe
             $app = new App();
-            if(!$app->getDao()-> isConnected()) //Iniciar sesion
+            if(!$app->getDao()-> conecxionAbierta()) //Iniciar sesion
             {
                 //Mostrar el error
                 echo "NO CONECTAS CHATO";
