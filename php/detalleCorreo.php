@@ -3,8 +3,17 @@ include_once("app.php");
 $app = new App();
 $app -> validateSession();
 App::print_head("Detalle de correo: ");
-//App::print_nav_Alum(App::nombreUsuario());
-
+//Preguntamos que tipo de usuario es para mostrar un nav u otro
+$tipoUsuario = $app->getDao()->tipoUsuario(App::nombreUsuario());
+if(strcmp($tipoUsuario,"alumno")==0)
+{
+    App::print_nav_Alum(App::nombreUsuario());
+}
+else
+{
+    App::print_nav_Empe(App::nombreUsuario());
+}
+//------------//
 //Recogemos el id del correo selecionado:
 $idCorreo = $_GET['id_correo'];
 $resul = $app ->getDetalleDeUnCorreoRecibido($idCorreo);
@@ -22,4 +31,5 @@ foreach($list as $fila)
     echo"</div>"; 
     
 }
+
 ?>

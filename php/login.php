@@ -68,24 +68,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                 //echo "<p> Usuario correcto.La conexion es correcta. </p>";
                 //Se guarda la sesion
                 //echo "Conectado!";
-               $app->saveSession($user);//Se guarda la sesion de ese usuario
-               $resultado = $app->getDao()->tipoUsuario($user,$password);
-               $list = $resultado ->fetchAll();
-               $tipoUsuario;
-               foreach ($list as $fila)
-               {
-               $tipoUsuario= $fila['tipoUsuario'];
-               }
-               // Si el usuario es de tipo  "Alumno"se redirige a una pagina, si es de "Empresa, a otra.    
-               if(strcmp($tipoUsuario,"alumno")==0)
-               {
+               $app->saveSession($user);//Se guarda la sesion de ese usuario         
                  //Se redirecciona
-                 echo "<script languaje=\"javascript\">window.location.href=\"plataformaAlum.php\"</script>"; //Nuevo añadido
-               }
-               else{
-                   //Se redirecciona
-                 echo "<script languaje=\"javascript\">window.location.href=\"plataformaEmp.php\"</script>";
-               }
+                 echo "<script languaje=\"javascript\">window.location.href=\"inicio.php\"</script>"; //Nuevo añadido
+         
             }else
                 echo "<p class=\"text-center\"> Usuario incorrecto. </p>";
 

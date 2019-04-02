@@ -113,14 +113,14 @@ function print_head($title="Página SEGEMP"){
               <ul class=\"navbar-nav mr-auto\">
           
               <li class=\"nav-item active\">
-                  <a class=\"nav-link\" href=\"listabsenceAll.php\">Contactar con un exalumno <span class=\"sr-only\">(current)</span></a>
+                  <a class=\"nav-link\" href=\"#\">Contactar con un exalumno <span class=\"sr-only\">(current)</span></a>
               </li>
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"listabsenceAll.php\">Correos enviados <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"correosEnviados.php\">Correos enviados <span class=\"sr-only\">(current)</span></a>
               </li>
 
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"plataformaAlum.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"inicio.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
               </li>
           
                     
@@ -143,11 +143,11 @@ function print_head($title="Página SEGEMP"){
                   <a class=\"nav-link\" href=\"#\">Buscar un alumno <span class=\"sr-only\">(current)</span></a>
               </li>
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"#\">Correos enviados <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"correosEnviados.php\">Correos enviados <span class=\"sr-only\">(current)</span></a>
               </li>
 
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"plataformaEmp.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"inicio.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
               </li>
           
                     
@@ -177,7 +177,7 @@ function print_head($title="Página SEGEMP"){
       }
 
       function nombreUsuario(){
-        return $_SESSION['user'];
+        return strtoupper($_SESSION['user']);
       }
       //Función que redirige a a Login
       function showLogin(){
@@ -201,13 +201,22 @@ function print_head($title="Página SEGEMP"){
       }
 
       //Función que devuelve todos los correos de un usuario concreto como remitente y detinatario
-      function getcorreo($user){
-          return $this->dao->getcorreo($user);
+      function getcorreosEnviadosRecibidos($user){
+          return $this->dao->getcorreosEnviadosRecibidos($user);
       }
 
       function getDetalleDeUnCorreoRecibido($idCorreo){
         return $this->dao->getDetalleDeUnCorreoRecibido($idCorreo);
     }
+
+    function getCorresEnviados($correoUsuario)
+    {
+      return $this->dao->getCorresEnviados($correoUsuario);
+    }
     
+    function getEmailUsuario($usuario)
+    {
+      return $this->dao->getEmailUsuario($usuario);
+    }
 }
 ?>

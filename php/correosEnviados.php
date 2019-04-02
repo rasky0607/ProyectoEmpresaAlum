@@ -1,17 +1,24 @@
 <?php
-/*
-Esto muestra la pantalla de inicio de un alumno que se ha logeado
- y el registro de mensajes enviados y recibidos
- */ 
 include_once("app.php");
 $app = new App();
 $app -> validateSession();
-App::print_head("Inicio Alumno");
-App::print_nav_Alum(App::nombreUsuario());//Pinta el nombre del usuario del que se guardo la sesion
+App::print_head("Correos enviados: ");
+//Preguntamos que tipo de usuario es para mostrar un nav u otro
+$tipoUsuario = $app->getDao()->tipoUsuario(App::nombreUsuario());
+if(strcmp($tipoUsuario,"alumno")==0)
+{
+    App::print_nav_Alum(App::nombreUsuario());
+}
+else
+{
+    App::print_nav_Empe(App::nombreUsuario());
+}
+//----------//
+//Preguntamos por el email de usuario para filtrar los correos que figura como remitente
+$emailUsuario = $app-> getEmailUsuario(App::nombreUsuario());
+$result = $app ->getCorresEnviados($emailUsuario);
+$list =$result->fetchAll();
 
-$result = $app->getcorreo(App::nombreUsuario());
-
-$list = $result->fetchAll();
 //print_r($list);
 echo "<table border=\"1\" class=\"table table-striped table-dark table-bordered\>";
 echo"<thead>";
