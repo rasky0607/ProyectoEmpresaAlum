@@ -64,11 +64,14 @@ insert into usuario (usuario,password,email,tipoUsuario) values('HugoBoss',passw
 insert into usuario (usuario,password,email,tipoUsuario) values('Maria',password('123'),'mariagarciamiralles@gmail.com','alumno');
 insert into usuario (usuario,password,email,tipoUsuario) values('PatriCons',password('123'),'PatriciaConsoladoresSA@gmail.com','empresa');
 insert into usuario (usuario,password,email,tipoUsuario) values('topete',password('123'),'topete@gmail.com','alumno');
+insert into usuario (usuario,password,email,tipoUsuario) values("CarmenDeMairena",password('123'),"LaCarmensitaRechulona@gmail.com","alumno"); -- NUEVO
+
 
 
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral,trabajaEn,fechaContrato)VALUES ('Esteban','Esteban','Gomez Ruiz',2019,'Activo','Prostitucion','19940122');
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral,trabajaEn,fechaContrato)VALUES ('Maria','Maria','Garcia Miralles',2019,'Activo','Monitora de ginasia ritmica','20100122');
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion)VALUES ('topete','Topete','Max Turbado',2017);
+insert into alumno(usuarioAlum,nombre,apellidos,aniopromocion,estadoLaboral) values("CarmenDeMairena","Carmen","De Mairena Montenegro",2010,"En paro");
 
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('HugoBoss','The Hugo Boss','Calle de la piruleta','696969696','Hugo Madrid');
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('PatriCons','Patricia consoladores S.A.','Calle de la UCA','969696969','Patricia Barrilado Carranque');
@@ -78,3 +81,5 @@ insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values
 
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(3,'TheHugoBoss@gmail.com','mariagarciamiralles@gmail.com',20190309,'Oferta de trabajo en Mascokotas','Esto es el contenido del correo 3');
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(4,'PatriciaConsoladoresSA@gmail.com','estebangomezruiz@gmail.com',20190222,'Oferta de trabajo de psicologo','Esto es el contenido del correo 4');
+insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(5,"TheHugoBoss@gmail.com","topete@gmail.com",20190219,"Oferta de trabajo vigilante de seguridad","Esto es el contenido del correo 5"); -- NUEVO
+insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(6,"LaCarmensitaRechulona@gmail.com","mariagarciamiralles@gmail.com",20190219,"El miedo en mis ojos","Esto es el contenido del correo 6.Señora, usted me impone,de hecho se me escondio el testiculo izquierdo del susuto.");

@@ -155,6 +155,58 @@ class Dao{
         }
     }
 
+    /*Funcion que evalua cuales son los correos de la tabla"correo",
+    en los que el email de usuario aparece como remitente.
+    En este caso el correo sera de envio devolvera "envio" en ROJO.
+    En caso de que el remitente sea un correo de un usuario de tipo "Empresa"azul devolvera "Empresa" en AZUL.
+    En caso de que no sea de empresa ni el email del usuario, devolvera "Recibido" en VERDE*/
+    /*
+select if(remitente='mariagarciamiralles@gmail.com','v','f') from correo where remitente='mariagarciamiralles@gmail.com';
+Devuelve V si es verdad y f si es falso.
+*/
+    function getCorreoEmailRemitente($emailUsuario,$remitente){
+        try
+        {                  
+            $resultadoFinal;
+            $valor;         
+            $sql="SELECT if('".$emailUsuario."'"."="."'".$remitente."','v','f')";
+            //echo $sql;
+            $resultado=$this->conecxion->query($sql);
+            $list=$resultado->fetchAll();           
+            $valor=$list[0][0];  
+            if($valor=='v')//Si esto se cumple es que el email del remitente es el mismo que el del usuario
+            {   //Osea mensaje ENVIADO        
+               $resultadoFinal=" <div class=\"correoEnviado\">ENVIADO</div>"; 
+            }
+            else
+            {              
+                //Comrpueba si el email como remitente es de alguna empresa Si lo es Devuelve "AZUL"
+                //select if(tipoUsuario='empresa','v','f') from usuario where email in(select remitente from correo where remitente='TheHugoBoss@gmail.com');
+                $sql="select if(".CUSUARIO_TIPO."='empresa','v','f') FROM ".TUSUARIO." WHERE ".CUSUARIO_EMAIL." IN(SELECT ".CCORREO_REMITENTE." FROM ".TCORREO." WHERE ".CCORREO_REMITENTE."='".$remitente."')";
+                //echo $sql;
+                $resultado=$this->conecxion->query($sql);
+                $list=$resultado->fetchAll();
+                $valor=$list[0][0];
+                if($valor=='v')
+                {
+                   
+                    $resultadoFinal=" <div class=\"correoEmpresa\">EMPRESA</div>"; 
+                }
+                else{ //Si no lo es devuelve "VERDE"
+                    //RECIBIDO de un compañero
+                    $resultadoFinal=" <div class=\"correoRecibido\">RECIBIDO</div>"; 
+                }
+               
+            }
+            return $resultadoFinal;        
+            
+        }
+        catch (PDOException $e)
+        {
+            $this->$error=$e->getMessage();
+        }
+    }
+
     /*
     //Funcion comodin para convertir una coleccion con un unico valor o consulta con un unico resultado
     en unico dato guardado ya en una variable

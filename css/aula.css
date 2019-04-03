@@ -10,3 +10,15 @@ footer {
 a{
     color: #CBD3E3;
 }
+.correoEnviado{
+    text-align: center;
+    background-color: crimson;
+}
+.correoRecibido{
+    text-align: center;
+    background-color: chartreuse;
+}
+.correoEmpresa{
+    text-align: center;
+    background-color: blue;
+}

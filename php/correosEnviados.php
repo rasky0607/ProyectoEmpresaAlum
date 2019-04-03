@@ -24,6 +24,7 @@ echo "<table border=\"1\" class=\"table table-striped table-dark table-bordered\
 echo"<thead>";
 echo "<tr <div class=\"p-3 mb-2 bg-success text-white\">";
 //Cabecera
+
 for($i=0;$i<$result->columnCount();$i++)
 {
     $nombreColumn = $result->getcolumnMeta($i);
@@ -47,7 +48,9 @@ foreach($list as $fila)
 
 echo "</tbody>";
 echo "</table>";
-
+if(empty($list)){//Si no ha enviado ningun correo
+    echo "<h3 class=\"text-center\"> Bandeja de Envio vacia.</h3>";
+    }
 App::print_footer();
 
 ?>

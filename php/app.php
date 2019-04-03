@@ -218,5 +218,10 @@ function print_head($title="Página SEGEMP"){
     {
       return $this->dao->getEmailUsuario($usuario);
     }
+
+    function getCorreoEmailRemitente($emailUsuario,$remitente)
+    {
+      return $this->dao->getCorreoEmailRemitente($emailUsuario,$remitente);
+    }
 }
 ?>
