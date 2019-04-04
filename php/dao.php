@@ -60,9 +60,7 @@ class Dao{
     }
 
     //Metodo que comprueba si hay una conexion con la BD
-    function conecxionAbierta()
-    {
-       
+    function conecxionAbierta(){       
         return isset($this->conecxion);// si conexion es null
     }
 
@@ -78,17 +76,26 @@ class Dao{
 
     }
 
-    function tipoUsuario($user)
-    {
+    /*Funcion que determina el tipo de usuario que tiene la sesion iniciada
+     En funcion de el nombre de usuario guardado en la sesion para pintar uno u otro NAV*/
+    function tipoUsuario($user){
         try{
         $sql="SELECT ".CUSUARIO_TIPO." from ".TUSUARIO." WHERE ".CUSUARIO_NOMBRE."='".$user."'";
         //echo $sql;
         $resultado = $this->conecxion->query($sql);
         $list = $resultado->fetchAll();    
         //var_dump($list);
-        $tipoUsuario = $list[0][0];//Obtenemos el correo del array resultante de list  se puede apreciar en el var_dump($list);
+        $tipoUsuario = $list[0][0];//Obtenemos el tipo de usuario del array resultante de list  se puede apreciar en el var_dump($list);
        
-        return $tipoUsuario;
+            if(strcmp($tipoUsuario,"alumno")==0)
+            {
+                return App::print_nav_Alum(App::nombreUsuario());
+            }
+            else
+            {
+                return App::print_nav_Empe(App::nombreUsuario());//Pinta el nombre del usuario del que se guardo la sesion
+            
+            }      
         }
         catch(PDOException $e)
         {

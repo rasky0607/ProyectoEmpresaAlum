@@ -65,6 +65,7 @@ insert into usuario (usuario,password,email,tipoUsuario) values('Maria',password
 insert into usuario (usuario,password,email,tipoUsuario) values('PatriCons',password('123'),'PatriciaConsoladoresSA@gmail.com','empresa');
 insert into usuario (usuario,password,email,tipoUsuario) values('topete',password('123'),'topete@gmail.com','alumno');
 insert into usuario (usuario,password,email,tipoUsuario) values("CarmenDeMairena",password('123'),"LaCarmensitaRechulona@gmail.com","alumno"); -- NUEVO
+insert into usuario (usuario,password,email,tipoUsuario) values("caracol",password('123'),"ElCaracolQueDerrapa@gmail.com","empresa");
 
 
 
@@ -75,6 +76,8 @@ insert into alumno(usuarioAlum,nombre,apellidos,aniopromocion,estadoLaboral) val
 
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('HugoBoss','The Hugo Boss','Calle de la piruleta','696969696','Hugo Madrid');
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('PatriCons','Patricia consoladores S.A.','Calle de la UCA','969696969','Patricia Barrilado Carranque');
+insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values("caracol","Caracol derrapador poco mordedor","Plaza caracola cuadrada",667907349,"Caracolis Herectus");
+
 
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(1,'estebangomezruiz@gmail.com','mariagarciamiralles@gmail.com',20190119,'¿Que pasa paca?','Esto es el contenido del correo 1');
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(2,'mariagarciamiralles@gmail.com','estebangomezruiz@gmail.com',20190119,'Aburrida','Esto es el contenido del correo 2');

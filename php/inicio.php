@@ -10,57 +10,48 @@ App::print_head("Inicio");
 //Preguntamos por el email de usuario para filtrar los correos que figura como remitente
 $emailUsuario = $app-> getEmailUsuario(App::nombreUsuario());
 //Preguntamos que tipo de usuario es para mostrar un nav u otro
-$tipoUsuario = $app->getDao()->tipoUsuario(App::nombreUsuario());
+$app->getDao()->tipoUsuario(App::nombreUsuario());
 
-if(strcmp($tipoUsuario,"alumno")==0)
-{
-    App::print_nav_Alum(App::nombreUsuario());
-}
-else
-{
-    App::print_nav_Empe(App::nombreUsuario());//Pinta el nombre del usuario del que se guardo la sesion
-    
-}
-//---------//
-
+//Obtenemos todos los correos ENviado/recibidos del usuario
 $result = $app->getcorreosEnviadosRecibidos(App::nombreUsuario());
-
+//Convertimos la coleccion $result en una coleccin de tipo lista
 $list = $result->fetchAll();
 
-//print_r($list);
-echo "<table border=\"1\" class=\"table table-striped table-dark table-bordered\>";
-echo"<thead>";
-echo "<tr <div class=\"p-3 mb-2 bg-success text-white\">";
 //Cabecera
-for($i=0;$i<$result->columnCount();$i++)
-{
-    $nombreColumn = $result->getcolumnMeta($i);
-    echo "<th>".strtoupper($nombreColumn['name'])."</th>";
-}
-echo "</tr>";
-echo "</thead>";
-echo "<tbody>";
-//Datos
-foreach($list as $fila)
-{
-     $remitente=$fila['remitente'];  
-     $tipoCorreo = $app->getCorreoEmailRemitente($emailUsuario,$remitente);
-    echo "<tr>";
-    echo "<td scope=\"row\"> <a href='detalleCorreo.php?id_correo=".$fila['idCorreo']."'/>".$fila['idCorreo']."</td>".
-    "<td scope=\"row\">".$tipoCorreo.$fila['remitente']."</td>".
-    "<td scope=\"row\">".$fila['destinatario']."</td>".
-    "<td scope=\"row\">".$fila['fecha']."</td>".
-    "<td scope=\"row\">".$fila['asunto']."</td>";
-    echo "</tr>";
-    
+$app->mostrarCabecerasDeTabla($result);
 
-}
+//Filas
+listarFilasDeLaTabla($list,$emailUsuario,$app);
 
-echo "</tbody>";
-echo "</table>";
-if(empty($list)){
-    echo "<h3 class=\"text-center\"> Bandeja de Entrada vacia.</h3>";
-    }
+//Si la lista $list esta vacia
+$app->coleccionVacia($list,"Bandeja de Entrada vacia.");
+
 App::print_footer();
+
+//---FUNCIONES--//
+
+/*Funcion que pinta las filas de una tabla en funcion de:
+ $list de datos pasada,el objeto $app en esta sesion y el correo del usuario de esta sesion $emailUsuario*/
+function listarFilasDeLaTabla($list,$emailUsuario,$app){
+    echo "<tbody>";
+    //Datos
+    foreach($list as $fila)
+    {
+      
+        $remitente=$fila['remitente'];  
+        $tipoCorreo = $app->getCorreoEmailRemitente($emailUsuario,$remitente);     
+        echo "<tr>";
+        echo "<td scope=\"row\"> <a href='detalleCorreo.php?id_correo=".$fila['idCorreo']."'/>".$fila['idCorreo']."</td>".
+        "<td scope=\"row\">".$tipoCorreo.$fila['remitente']."</td>".
+        "<td scope=\"row\">".$fila['destinatario']."</td>".
+        "<td scope=\"row\">".$fila['fecha']."</td>".
+        "<td scope=\"row\">".$fila['asunto']."</td>";
+        echo "</tr>";
+    }
+    echo "</tbody>";
+    echo "</table>";
+}
+
+//-----------------//
 
 ?>

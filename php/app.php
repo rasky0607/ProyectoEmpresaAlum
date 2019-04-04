@@ -19,7 +19,7 @@ function print_head($title="Página SEGEMP"){
         <meta name=\"title\" content=\"$title\">
         <meta name=\"description\" content=\"Descripción de la WEB\">    
         <link href=\"../css/bootstrap.css\" rel=\"stylesheet\"/>  
-        <link href=\"../css/aula.css\" rel=\"stylesheet\"/>
+        <link href=\"../css/estilosGeneral.css\" rel=\"stylesheet\"/>
         <script src=\"../js/jquery-3.3.1.js\"></script>
         <script type=\"text/javascript\" src=\"../js/bootstrap.js\"></script>
         <script type=\"text/javascript\" src=\"../js/bootstrap.min.js\"></script>
@@ -46,7 +46,7 @@ function print_head($title="Página SEGEMP"){
             <meta name=\"title\" content=\"$title\">
             <meta name=\"description\" content=\"Descripción de la WEB\">    
             <link href=\"../css/bootstrap.css\" rel=\"stylesheet\"/>  
-            <link href=\"../css/aula.css\" rel=\"stylesheet\"/>
+            <link href=\"../css/estilosLogin.css\" rel=\"stylesheet\"/>
             <script src=\"../js/jquery-3.3.1.js\"></script>
             <script type=\"text/javascript\" src=\"../js/bootstrap.js\"></script>
             <script type=\"text/javascript\" src=\"../js/bootstrap.min.js\"></script>
@@ -223,5 +223,29 @@ function print_head($title="Página SEGEMP"){
     {
       return $this->dao->getCorreoEmailRemitente($emailUsuario,$remitente);
     }
+
+    //Funcion que pinta la cabecera de una tabla con estilos de boostrap
+    function mostrarCabecerasDeTabla($result){
+      echo "<table border=\"1\" class=\"table table-striped table-dark table-bordered\>";
+      echo"<thead>";
+      echo "<tr <div class=\"p-3 mb-2 bg-success text-white\">";
+      for($i=0;$i<$result->columnCount();$i++)
+      {       
+         $nombreColumn = $result->getcolumnMeta($i);
+         echo "<th>".strtoupper($nombreColumn['name'])."</th>";
+         
+      }
+      echo "</tr>";
+      echo "</thead>";
+    }
+
+    function coleccionVacia($list,$mensaje)
+    {
+      if(empty($list)){//Si no ha enviado ningun correo
+        echo "<h3 class=\"text-center\"> $mensaje</h3>";
+        }
+    }
+
+ 
 }
 ?>

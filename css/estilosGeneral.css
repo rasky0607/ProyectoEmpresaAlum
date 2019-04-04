@@ -1,0 +1,25 @@
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: cornflowerblue;
+    color: white;
+    text-align: center;
+}
+a{
+    color: #CBD3E3;
+}
+.correoEnviado{
+    text-align: center;
+    background-color: crimson;
+}
+.correoRecibido{
+    text-align: center;
+    background-color: chartreuse;
+    -moz-outline-radius-bottomleft: 10px;
+}
+.correoEmpresa{
+    text-align: center;
+    background-color: blue;
+}

@@ -40,7 +40,7 @@ echo" <h1 class=\"text-center\">Inicio de sesión</h1>";
 
 <?php
 
-//Comprobacion de que no este vacio (Instalamos phpMyadmin y mariadb u otro motor de BD)
+//Comprobacion de que no este vacio 
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
     $user=$_POST["user"];
