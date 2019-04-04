@@ -7,6 +7,9 @@ footer {
     color: white;
     text-align: center;
 }
+body{
+    background-color: #66ffa6
+}
 a{
     color: #CBD3E3;
 }
@@ -17,7 +20,6 @@ a{
 .correoRecibido{
     text-align: center;
     background-color: chartreuse;
-    -moz-outline-radius-bottomleft: 10px;
 }
 .correoEmpresa{
     text-align: center;

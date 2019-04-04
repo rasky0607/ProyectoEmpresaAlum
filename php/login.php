@@ -28,9 +28,11 @@ echo" <h1 class=\"text-center\">Inicio de sesión</h1>";
                     <input id="password" name="password" type="password" autofocus="autofocus" requiered="requiered" class="form-control">
                 </div>
                 <br/>
-                <hr/>
+               
                 <div class="text-center">
                     <input type="submit" value="Inicio de sesión" class="btn btn-primary">
+                    <hr/>
+                    <a href="registro.php" class="btn btn-primary">Registrarse</a>
                 </div>
                 
             </form>

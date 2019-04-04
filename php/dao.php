@@ -162,6 +162,12 @@ class Dao{
         }
     }
 
+    function getDatosUsuario($nombreUsuario)
+    {
+        //obtener los datos de la tabla alumno o de la tabla empresa
+    }
+
+
     /*Funcion que evalua cuales son los correos de la tabla"correo",
     en los que el email de usuario aparece como remitente.
     En este caso el correo sera de envio devolvera "envio" en ROJO.
@@ -214,6 +220,12 @@ Devuelve V si es verdad y f si es falso.
         }
     }
 
+   
+   
+   
+   
+   
+   
     /*
     //Funcion comodin para convertir una coleccion con un unico valor o consulta con un unico resultado
     en unico dato guardado ya en una variable

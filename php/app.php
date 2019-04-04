@@ -26,7 +26,7 @@ function print_head($title="Página SEGEMP"){
         <script type=\"text/javascript\" src=\"../js/bootstrap.bundle.js\"></script>
         
       </head>  
-      <body style=\"background-color:#66ffa6\">    
+      <body>    
         <header>
        
        
@@ -53,47 +53,11 @@ function print_head($title="Página SEGEMP"){
             <script type=\"text/javascript\" src=\"../js/bootstrap.bundle.js\"></script>
             
           </head>  
-          <body style=\"background-color:#bbdefb\">       
+          <body>       
             <header>         
             </header>
             <br/> ";
-
-  
         }
-
-        //Funcion que imprime el menú del sitio web
-      function print_nav_ausencias(){
-        echo"      
-        <div class=\"p-1 mb-2 bg-success text-white\"/>
-        <nav class=\"navbar navbar-expand-lg navbar-dark\">              
-        <span class=\"navbar-brand mb-0 h1\"><u>Ausencias:</u></span>
-        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
-            <ul class=\"navbar-nav mr-auto\">
-        
-            <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"listabsenceAll.php\">Listado de ausencias <span class=\"sr-only\">(current)</span></a>
-            </li>
-            <li class=\"nav-item dropdown\">
-            <span class=\"nav-item active\"> <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdownMenuLink\" role=\"button\"
-                 data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                Gestión de ausencias
-                </a></sapn>
-                <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownMenuLink\">
-                    <a class=\"dropdown-item disabled\" data-toggle=\"modal\" href=\"#\">Alta ausencia</a>
-                    <a class=\"dropdown-item disabled\" href=\"#\">Editar ausencia</a>
-                    <a class=\"dropdown-item\" href=\"formSearchAbsenDate.php\">Filtrar ausencias</a>
-                </div> 
-                </li>                                 
-              </li>
-              <li class=\"nav-item active\">
-              <a class=\"nav-link\" href=\"liststudent.php\">Listado de alumnos <span class=\"sr-only\">(current)</span></a>
-          </li>            
-            </ul>
-           <span class=\"navbar-brand mb-0 h1\"><a class=\"nav-link\" href=\"logout.php\">Cerrar sesión</a></span>
-          </nav> 
-          </div>";
-        }
-
    
     
         //Funcion que imprime el pié de página del sitio Web
@@ -108,7 +72,7 @@ function print_head($title="Página SEGEMP"){
           echo"      
           <div class=\"p-1 mb-2 bg-success text-white\"/>
           <nav class=\"navbar navbar-expand-lg navbar-dark\">              
-          <span class=\"navbar-brand mb-0 h1\"><u>Usuario: $user</u></span>
+          <span class=\"navbar-brand mb-0 h1\"><u>Usuario:<a href=\"perfil.php\"> $user</a></u></span>
           <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
               <ul class=\"navbar-nav mr-auto\">
           
@@ -122,8 +86,7 @@ function print_head($title="Página SEGEMP"){
               <li class=\"nav-item active\">
                 <a class=\"nav-link\" href=\"inicio.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
               </li>
-          
-                    
+                             
               </ul>
              <span class=\"navbar-brand mb-0 h1\"><a class=\"nav-link\" href=\"logout.php\">Cerrar sesión</a></span>
             </nav> 
@@ -135,7 +98,7 @@ function print_head($title="Página SEGEMP"){
           echo"      
           <div class=\"p-1 mb-2 bg-success text-white\"/>
           <nav class=\"navbar navbar-expand-lg navbar-dark\">              
-          <span class=\"navbar-brand mb-0 h1\"><u>Usuario: $user</u></span>
+          <span class=\"navbar-brand mb-0 h1\"><u>Usuario:<a href=\"perfil.php\"> $user</a></u></span>
           <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
               <ul class=\"navbar-nav mr-auto\">
           
