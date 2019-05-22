@@ -8,7 +8,7 @@ footer {
     text-align: center;
 }
 body{
-    background-color: #e9ecec;
+    background-color: #f6f9fc;
 }
 a{
     /*#CBD3E3*/
@@ -29,6 +29,15 @@ a{
 .tablalistado{
     background-color: rgb(166, 174, 197);
 }
+/*Cabecera de la tabla*/
 .cabecolum{
     background-color: rgb(89, 172, 211);
+}
+#marcaerror{
+    color: #FF0000;
+    
+}
+#marcacorrecto{
+    color: rgb(59, 134, 40);
+    
 }

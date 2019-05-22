@@ -29,6 +29,7 @@ App::print_footer();
 /*Funcion que pinta las filas de una tabla en funcion de:
  $list de datos pasada*/
 function mostrarDetalles($list){
+    echo "<tbody class=\"tablalistado\">";
     foreach($list as $fila)
     {
         echo "<tr>";

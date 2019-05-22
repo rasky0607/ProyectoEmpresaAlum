@@ -15,7 +15,7 @@ App::print_head("Registro");
             </div>               
                 <div class="from-group">
                     <label for="user">Usuario:</label>
-                    <input id="user" name="user" type="text" autofocus="autofocus" requiered="requiered" class="form-control" value=<?php echo $usuario?>>
+                    <input id="user" name="user" type="text" autofocus="autofocus" requiered="requiered" class="form-control" >
                 </div>
                 <div class="from-group">
                     <label for="password">Password:</label>
@@ -59,20 +59,22 @@ if(!empty($usuario)&&!empty($email))
     {
         if($app->insertNuevoUsuario($usuario,$password,$email,$tipoUsuario))
         {
-            echo"Usuario creado con exito!.";
+            echo"<p class=\"text-center\"><a id=\"marcacorrecto\">Usuario creado con exito!.</a></p>";
         }else{
-            echo"Fallo al crear el usuario";
+            echo"<p class=\"text-center\"><a id=\"marcaerror\">*</a>Fallo al crear el usuario.</p>";
         }
     }
     else
     {
-        echo"Los password no coinciden";
+        echo"<p class=\"text-center\"><a id=\"marcaerror\">*</a>Los password no coinciden.</p>";
     }
+}else if(!preg_match('^.+',$usuario)&&!empty($email)){
+    echo"<p class=\"text-center\"><a id=\"marcaerror\">*</a>Error: Los campos Usuario y el Email deben rellenarse.</p>";
 }
 else{
-    echo"El usuario y email no pueden estar vacios.";
-    //Pintamos de nuevo el formulario con los datos que habia hasta el momento:         
+    echo"<p class=\"text-center\">Todos los campos son obligatorios.</p>";
 }
+
 //echo " DATOS-> ".$usuario.", ".$password.", ".$confirPassword.", ".$email.", ".$tipoUsuario; 
 
 ?>

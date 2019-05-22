@@ -220,13 +220,14 @@ Devuelve V si es verdad y f si es falso.
         }
     }
 
+    //Registro
     function insertNuevoUsuario($usuario,$password,$email,$tipoUsuario)
     {
         try
         {
             $sql="INSERT INTO ".TUSUARIO."(".CUSUARIO_NOMBRE.",".CUSUARIO_PASSWORD.",".CUSUARIO_EMAIL.",".CUSUARIO_TIPO.") VALUES "."('".$usuario."',password('".$password."'),'".$email."','".$tipoUsuario."')";
             $resultado=$this->conecxion->query($sql);
-            echo $sql;     
+            //echo $sql;     
             return $resultado;
         }
         catch (PDOException $e)

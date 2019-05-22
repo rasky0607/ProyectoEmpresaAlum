@@ -72,7 +72,7 @@ function print_head($title="Página SEGEMP"){
           echo"      
           <div class=\"p-1 mb-2 bg-info text-white\"/>
           <nav class=\"navbar navbar-expand-lg navbar-dark\">              
-          <span class=\"navbar-brand mb-0 h1\"><u>Usuario:<a href=\"perfil.php\"> $user</a></u></span>
+          <span class=\"navbar-brand mb-0 h1\"><u>Usuario:<a href=\"perfil.php\" title=\"perfil\"> $user</a></u></span>
           <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
               <ul class=\"navbar-nav mr-auto\">
           
@@ -98,7 +98,7 @@ function print_head($title="Página SEGEMP"){
           echo"      
           <div class=\"p-1 mb-2 bg-info text-white\"/>
           <nav class=\"navbar navbar-expand-lg navbar-dark\">              
-          <span class=\"navbar-brand mb-0 h1\"><u>Usuario:<a href=\"perfil.php\"> $user</a></u></span>
+          <span class=\"navbar-brand mb-0 h1\"><u>Usuario:<a href=\"perfil.php\" title=\"perfil\"> $user</a></u></span>
           <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
               <ul class=\"navbar-nav mr-auto\">
           
