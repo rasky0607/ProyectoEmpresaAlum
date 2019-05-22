@@ -16,7 +16,7 @@ App::print_head_login("Inicio de sesión");
             <form method="POST" action="login.php">
             <div class="col-4 col-md-0 offset-md-4">
                 <br/> 
-                <img src="../img/logomail.jpeg" width="100" height="100"/>
+                <img src="../img/logo2.svg" width="100" height="100"/>
             </div>    
 
                 <div class="from-group">
