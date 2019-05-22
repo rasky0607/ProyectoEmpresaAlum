@@ -5,7 +5,7 @@ include_once("app.php");
 session_start();
 //llamada a metodos para pintar la cabecera plantilla de la pagina
 App::print_head_login("Inicio de sesión");
-echo" <h1 class=\"text-center\">Inicio de sesión</h1>";
+//echo" <h1 class=\"text-center\">Inicio de sesión</h1>";
 ?>
 <!--Crear el formulario LOGIN con Bootstrap-->
 <div class="container">
@@ -16,7 +16,7 @@ echo" <h1 class=\"text-center\">Inicio de sesión</h1>";
             <form method="POST" action="login.php">
             <div class="col-4 col-md-0 offset-md-4">
                 <br/> 
-                <img src="../img/login.png" width="100" height="100"/>
+                <img src="../img/logomail.jpeg" width="100" height="100"/>
             </div>    
 
                 <div class="from-group">
@@ -30,7 +30,7 @@ echo" <h1 class=\"text-center\">Inicio de sesión</h1>";
                 <br/>
                
                 <div class="text-center">
-                    <input type="submit" value="Inicio de sesión" class="btn btn-primary">
+                    <input type="submit" value="Iniciar de sesión" class="btn btn-primary">
                     <hr/>
                     <a href="registro.php" class="btn btn-primary">Registrarse</a>
                 </div>

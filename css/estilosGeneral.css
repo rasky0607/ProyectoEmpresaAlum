@@ -8,10 +8,11 @@ footer {
     text-align: center;
 }
 body{
-    background-color: #66ffa6
+    background-color: #e9ecec;
 }
 a{
-    color: #CBD3E3;
+    /*#CBD3E3*/
+    color: rgb(253, 247, 247);
 }
 .correoEnviado{
     text-align: center;
@@ -24,4 +25,10 @@ a{
 .correoEmpresa{
     text-align: center;
     background-color: blue;
+}
+.tablalistado{
+    background-color: rgb(166, 174, 197);
+}
+.cabecolum{
+    background-color: rgb(89, 172, 211);
 }

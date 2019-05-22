@@ -70,21 +70,21 @@ function print_head($title="Página SEGEMP"){
 
         function print_nav_Alum($user){
           echo"      
-          <div class=\"p-1 mb-2 bg-success text-white\"/>
+          <div class=\"p-1 mb-2 bg-info text-white\"/>
           <nav class=\"navbar navbar-expand-lg navbar-dark\">              
           <span class=\"navbar-brand mb-0 h1\"><u>Usuario:<a href=\"perfil.php\"> $user</a></u></span>
           <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
               <ul class=\"navbar-nav mr-auto\">
           
               <li class=\"nav-item active\">
-                  <a class=\"nav-link\" href=\"#\">Contactar con un exalumno <span class=\"sr-only\">(current)</span></a>
+                  <a class=\"nav-link\" href=\"#\"><img src=\"../img/contactar.png\" title=\"Contactar con exalumno\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
               </li>
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"correosEnviados.php\">Correos enviados <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"correosEnviados.php\"><img src=\"../img/correoenviado.png\" title=\"Correos Enviados\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
               </li>
 
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"inicio.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"inicio.php\"><img src=\"../img/buzon.png\" title=\"Registro de todos los correos\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>            
               </li>
                              
               </ul>
@@ -92,25 +92,25 @@ function print_head($title="Página SEGEMP"){
             </nav> 
             </div>";
           }
-  
+
 
         function print_nav_Empe($user){
           echo"      
-          <div class=\"p-1 mb-2 bg-success text-white\"/>
+          <div class=\"p-1 mb-2 bg-info text-white\"/>
           <nav class=\"navbar navbar-expand-lg navbar-dark\">              
           <span class=\"navbar-brand mb-0 h1\"><u>Usuario:<a href=\"perfil.php\"> $user</a></u></span>
           <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
               <ul class=\"navbar-nav mr-auto\">
           
               <li class=\"nav-item active\">
-                  <a class=\"nav-link\" href=\"#\">Buscar un alumno <span class=\"sr-only\">(current)</span></a>
+                  <a class=\"nav-link\" href=\"#\"><img src=\"../img/buscar.png\" title=\"Buscar alumno\" width=\"50\" height=\"50\"/> <span class=\"sr-only\">(current)</span></a>
               </li>
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"correosEnviados.php\">Correos enviados <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"correosEnviados.php\"><img src=\"../img/correoenviado.png\" title=\"Correos Enviados\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
               </li>
 
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"inicio.php\">Registro de todos los correos <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"inicio.php\"><img src=\"../img/buzon.png\" title=\"Registro de todos los correos\" width=\"50\" height=\"50\"/> <span class=\"sr-only\">(current)</span></a>
               </li>
           
                     
@@ -189,13 +189,13 @@ function print_head($title="Página SEGEMP"){
 
     //Funcion que pinta la cabecera de una tabla con estilos de boostrap
     function mostrarCabecerasDeTabla($result){
-      echo "<table border=\"1\" class=\"table table-striped table-dark table-bordered\>";
+      echo "<table class=\"table table-striped table-dark table-bordered\>";
       echo"<thead>";
       echo "<tr <div class=\"p-3 mb-2 bg-success text-white\">";
       for($i=0;$i<$result->columnCount();$i++)
       {       
          $nombreColumn = $result->getcolumnMeta($i);
-         echo "<th>".strtoupper($nombreColumn['name'])."</th>";
+         echo "<th class=\"cabecolum\">".strtoupper($nombreColumn['name'])."</th>";
          
       }
       echo "</tr>";
@@ -208,7 +208,10 @@ function print_head($title="Página SEGEMP"){
         echo "<h3 class=\"text-center\"> $mensaje</h3>";
         }
     }
-
- 
+    function insertNuevoUsuario($usuario,$password,$email,$tipoUsuario)
+    {
+      return $this->dao->insertNuevoUsuario($usuario,$password,$email,$tipoUsuario);
+    }
+    
 }
 ?>

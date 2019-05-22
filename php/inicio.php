@@ -33,7 +33,7 @@ App::print_footer();
 /*Funcion que pinta las filas de una tabla en funcion de:
  $list de datos pasada,el objeto $app en esta sesion y el correo del usuario de esta sesion $emailUsuario*/
 function listarFilasDeLaTabla($list,$emailUsuario,$app){
-    echo "<tbody>";
+    echo "<tbody class=\"tablalistado\">";
     //Datos
     foreach($list as $fila)
     {
