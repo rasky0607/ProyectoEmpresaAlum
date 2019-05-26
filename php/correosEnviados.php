@@ -34,7 +34,7 @@ function mostrarDetalles($list,$app){
     echo "<tbody class=\"tablalistado\">";
 
     foreach($list as $fila)
-    {    
+    {    //Rellena la columna tipo de correo con el color del correo correspondiente
         $tipoCorreo = $app->getCorreoEmailRemitente($emailUsuario,$remitente); 
       
         echo "<tr>";

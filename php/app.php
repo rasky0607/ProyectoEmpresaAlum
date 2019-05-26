@@ -77,7 +77,7 @@ function print_head($title="Página SEGEMP"){
               <ul class=\"navbar-nav mr-auto\">
           
               <li class=\"nav-item active\">
-                  <a class=\"nav-link\" href=\"#\"><img src=\"../img/contactar.png\" title=\"Contactar con exalumno\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
+                  <a class=\"nav-link\" href=\"buscarAlumno.php\"><img src=\"../img/contactar.png\" title=\"Contactar con exalumno\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
               </li>
               <li class=\"nav-item active\">
                 <a class=\"nav-link\" href=\"correosEnviados.php\"><img src=\"../img/correoenviado.png\" title=\"Correos Enviados\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
@@ -103,13 +103,12 @@ function print_head($title="Página SEGEMP"){
               <ul class=\"navbar-nav mr-auto\">
           
               <li class=\"nav-item active\">
-                  <a class=\"nav-link\" href=\"#\"><img src=\"../img/buscar.png\" title=\"Buscar alumno\" width=\"50\" height=\"50\"/> <span class=\"sr-only\">(current)</span></a>
+                  <a class=\"nav-link\" href=\"buscarAlumno.php\"><img src=\"../img/buscar.png\" title=\"Buscar alumno\" width=\"50\" height=\"50\"/> <span class=\"sr-only\">(current)</span></a>
               </li>           
 
               <li class=\"nav-item active\">
                 <a class=\"nav-link\" href=\"inicio.php\"><img src=\"../img/correoenviado.png\" title=\"Correos Enviados\" width=\"50\" height=\"50\"/> <span class=\"sr-only\">(current)</span></a>
-              </li>
-          
+              </li>       
                     
               </ul>
              <span class=\"navbar-brand mb-0 h1\"><a class=\"nav-link\" href=\"logout.php\">Cerrar sesión</a></span>

@@ -21,9 +21,9 @@ create database  if not exists empresalum character set ='utf8mb4';
 
 	create table alumno(
 		usuarioAlum varchar(70),
-		nombre varchar(40) not null,
-		apellidos varchar(100) not null,
-		anioPromocion integer not null,
+		nombre varchar(40) default 'Vacio' not null,
+		apellidos varchar(100) default 'Vacio' not null,
+		anioPromocion integer default null,
 		estadoLaboral enum('En paro','Activo') default 'En paro' not null, 
 		trabajaEn varchar(150) default null,
 		fechaContrato date default null,
@@ -34,10 +34,10 @@ create database  if not exists empresalum character set ='utf8mb4';
 
 	create table empresa(
 		usuarioEmp varchar(70),
-		nombre varchar(150) not null,
-		direccion varchar(200) not null,
-		telefono varchar(12) not null,
-		nombreContacto varchar(100) not null,
+		nombre varchar(150) default 'Vacio' not null,
+		direccion varchar(200) default 'Vacio' not null,
+		telefono varchar(12) default 'Vacio' not null,
+		nombreContacto varchar(100) default 'Vacio' not null,
 		primary key(usuarioEmp),
 		foreign key (usuarioEmp) references usuario (usuario) on update cascade on delete restrict		
 
@@ -66,18 +66,19 @@ insert into usuario (usuario,password,email,tipoUsuario) values('PatriCons',pass
 insert into usuario (usuario,password,email,tipoUsuario) values('topete',password('123'),'topete@gmail.com','alumno');
 insert into usuario (usuario,password,email,tipoUsuario) values("CarmenDeMairena",password('123'),"LaCarmensitaRechulona@gmail.com","alumno"); -- NUEVO
 insert into usuario (usuario,password,email,tipoUsuario) values("caracol",password('123'),"ElCaracolQueDerrapa@gmail.com","empresa");
-
-
+insert into usuario (usuario,password,email,tipoUsuario)values('test1',password('123'),'test1@gmail.com','alumno');
+insert into usuario (usuario,password,email,tipoUsuario)values('test2',password('123'),'test2@gmail.com','empresa');
 
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral,trabajaEn,fechaContrato)VALUES ('Esteban','Esteban','Gomez Ruiz',2019,'Activo','Prostitucion','19940122');
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral,trabajaEn,fechaContrato)VALUES ('Maria','Maria','Garcia Miralles',2019,'Activo','Monitora de ginasia ritmica','20100122');
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion)VALUES ('topete','Topete','Max Turbado',2017);
 insert into alumno(usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral) values("CarmenDeMairena","Carmen","De Mairena Montenegro",2010,"En paro");
+insert into alumno (usuarioAlum)VALUES ('test1');
 
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('HugoBoss','The Hugo Boss','Calle de la piruleta','696969696','Hugo Madrid');
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('PatriCons','Patricia consoladores S.A.','Calle de la UCA','969696969','Patricia Barrilado Carranque');
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values("caracol","Caracol derrapador poco mordedor","Plaza caracola cuadrada",667907349,"Caracolis Herectus");
-
+insert into empresa (usuarioEmp)VALUES ('test2');
 
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(1,'estebangomezruiz@gmail.com','mariagarciamiralles@gmail.com',20190119,'¿Que pasa paca?','Esto es el contenido del correo 1');
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(2,'mariagarciamiralles@gmail.com','estebangomezruiz@gmail.com',20190119,'Aburrida','Esto es el contenido del correo 2');
@@ -91,7 +92,7 @@ insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values
 
 	/*Trigger para controlar:
 	 cuando el campo trabajaEn esta lleno, el estado laboral pase a Activo y viceversa*/
-	 insert into usuario values('test1',password('123'),'test1@gmail.com','alumno');
+
 	 
 DELIMITER #
 	 drop trigger if exists empresalum.bialumno#
@@ -99,13 +100,26 @@ DELIMITER #
 	 	for each row
 	 	BEGIN
 	 		if new.trabajaEn is not null or new.trabajaEn is not null and new.estadoLaboral='En paro' then
-	 			 -- insert into alumno values(new.usuarioAlum,new.nombre,new.apellidos,new.anioPromocion,'Activo',new.trabajaEn,new.fechaContrato);
 	 			 SET new.estadoLaboral ='Activo';
 	 		end if;
 	 		if new.trabajaEn is null and new.estadoLaboral='Activo' then
-	 			 -- insert into alumno values(new.usuarioAlum,new.nombre,new.apellidos,new.anioPromocion,'En paro',NULL,NULL);
+	 			 
 	 			 SET new.estadoLaboral ='En paro';
 	 		end if;
 	 	END#
+	 	 drop trigger if exists empresalum.bualumno#
+	 	 create trigger empresalum.bualumno before update on alumno
+	 	for each row
+	 	BEGIN
+	 		if new.trabajaEn is not null or new.trabajaEn is not null and new.estadoLaboral='En paro' then
+	 			 SET new.estadoLaboral ='Activo';
+	 		end if;
+	 		if new.trabajaEn is null and new.estadoLaboral='Activo' then
+	 			 SET new.estadoLaboral ='En paro';
+	 		end if;
+	 		
+	 	END#
+	 	 drop trigger if exists empresalum.aialumno#
+
 
 DELIMITER ;

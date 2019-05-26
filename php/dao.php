@@ -107,7 +107,7 @@ class Dao{
            $tipoUsuario =$this->ObtenertipoUsuario($user);      
             if(strcmp($tipoUsuario,"alumno")==0)
             {
-                $sql2="SELECT * from ".TALUMNO." WHERE ".CALUMNO_NOMBRE."='".$user."'";
+                $sql2="SELECT * from ".TALUMNO." WHERE ".CALUMNO_USUARIOALUM."='".$user."'";
                 //echo $sql2;
                 $result=$this->conecxion->query($sql2);
                 $listdatos =$result->fetchAll();
@@ -278,6 +278,19 @@ Devuelve V si es verdad y f si es falso.
         {
             $sql="INSERT INTO ".TUSUARIO."(".CUSUARIO_NOMBRE.",".CUSUARIO_PASSWORD.",".CUSUARIO_EMAIL.",".CUSUARIO_TIPO.") VALUES "."('".$usuario."',password('".$password."'),'".$email."','".$tipoUsuario."')";
             $resultado=$this->conecxion->query($sql);
+            if(strcmp($tipoUsuario,'alumno')==0)
+            {
+                echo "alumno!";
+                $sql2="INSERT INTO ".TALUMNO."(".CALUMNO_USUARIOALUM.")VALUES('".$usuario."')";
+                echo $sql2;
+                $resultado2=$this->conecxion->query($sql2);
+
+            }
+            else{
+                echo "empresa";
+                $sql2="INSERT INTO ".TEMPRESA."(".CEMPRESA_USUARIOEMP.")VALUES('".$usuario."')";
+                $resultado2=$this->conecxion->query($sql2);
+            }
             //echo $sql;     
             return $resultado;
         }
