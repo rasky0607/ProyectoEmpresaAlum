@@ -24,7 +24,7 @@ create database  if not exists empresalum character set ='utf8mb4';
 		nombre varchar(40) not null,
 		apellidos varchar(100) not null,
 		anioPromocion integer not null,
-		estadoLaboral enum('En paro','Activo') default 'En paro', 
+		estadoLaboral enum('En paro','Activo') default 'En paro' not null, 
 		trabajaEn varchar(150) default null,
 		fechaContrato date default null,
 		primary key(usuarioAlum),
@@ -72,7 +72,7 @@ insert into usuario (usuario,password,email,tipoUsuario) values("caracol",passwo
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral,trabajaEn,fechaContrato)VALUES ('Esteban','Esteban','Gomez Ruiz',2019,'Activo','Prostitucion','19940122');
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral,trabajaEn,fechaContrato)VALUES ('Maria','Maria','Garcia Miralles',2019,'Activo','Monitora de ginasia ritmica','20100122');
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion)VALUES ('topete','Topete','Max Turbado',2017);
-insert into alumno(usuarioAlum,nombre,apellidos,aniopromocion,estadoLaboral) values("CarmenDeMairena","Carmen","De Mairena Montenegro",2010,"En paro");
+insert into alumno(usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral) values("CarmenDeMairena","Carmen","De Mairena Montenegro",2010,"En paro");
 
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('HugoBoss','The Hugo Boss','Calle de la piruleta','696969696','Hugo Madrid');
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('PatriCons','Patricia consoladores S.A.','Calle de la UCA','969696969','Patricia Barrilado Carranque');
@@ -85,4 +85,27 @@ insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(3,'TheHugoBoss@gmail.com','mariagarciamiralles@gmail.com',20190309,'Oferta de trabajo en Mascokotas','Esto es el contenido del correo 3');
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(4,'PatriciaConsoladoresSA@gmail.com','estebangomezruiz@gmail.com',20190222,'Oferta de trabajo de psicologo','Esto es el contenido del correo 4');
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(5,"TheHugoBoss@gmail.com","topete@gmail.com",20190219,"Oferta de trabajo vigilante de seguridad","Esto es el contenido del correo 5"); -- NUEVO
-insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(6,"LaCarmensitaRechulona@gmail.com","mariagarciamiralles@gmail.com",20190219,"El miedo en mis ojos","Esto es el contenido del correo 6.Señora, usted me impone,de hecho se me escondio el testiculo izquierdo del susuto.");
+insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(6,"LaCarmensitaRechulona@gmail.com","mariagarciamiralles@gmail.com",20190219,'El miedo en mis ojos','Esto es el contenido del correo 6.Señora, usted me impone,de hecho se me escondio el testiculo izquierdo del susuto.');
+
+
+
+	/*Trigger para controlar:
+	 cuando el campo trabajaEn esta lleno, el estado laboral pase a Activo y viceversa*/
+	 insert into usuario values('test1',password('123'),'test1@gmail.com','alumno');
+	 
+DELIMITER #
+	 drop trigger if exists empresalum.bialumno#
+	 create trigger empresalum.bialumno before insert on alumno
+	 	for each row
+	 	BEGIN
+	 		if new.trabajaEn is not null or new.trabajaEn is not null and new.estadoLaboral='En paro' then
+	 			 -- insert into alumno values(new.usuarioAlum,new.nombre,new.apellidos,new.anioPromocion,'Activo',new.trabajaEn,new.fechaContrato);
+	 			 SET new.estadoLaboral ='Activo';
+	 		end if;
+	 		if new.trabajaEn is null and new.estadoLaboral='Activo' then
+	 			 -- insert into alumno values(new.usuarioAlum,new.nombre,new.apellidos,new.anioPromocion,'En paro',NULL,NULL);
+	 			 SET new.estadoLaboral ='En paro';
+	 		end if;
+	 	END#
+
+DELIMITER ;

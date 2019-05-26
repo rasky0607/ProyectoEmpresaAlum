@@ -11,7 +11,7 @@ App::print_head("Registro");
             <form method="POST" action="registro.php">
             <div class="col-4 col-md-0 offset-md-4">
                 <br/> 
-                <img src="../img/login.png" width="100" height="100"/>
+                <img src="../img/nuevouser.png" width="100" height="100"/>
             </div>               
                 <div class="from-group">
                     <label for="user">Usuario:</label>

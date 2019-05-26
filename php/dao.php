@@ -102,6 +102,55 @@ class Dao{
             $this->$error=$e->getMessage();
         }
     }
+    function perfilUsuario($user){
+        try{
+           $tipoUsuario =$this->ObtenertipoUsuario($user);      
+            if(strcmp($tipoUsuario,"alumno")==0)
+            {
+                $sql2="SELECT * from ".TALUMNO." WHERE ".CALUMNO_NOMBRE."='".$user."'";
+                //echo $sql2;
+                $result=$this->conecxion->query($sql2);
+                $listdatos =$result->fetchAll();
+                return $listdatos;
+            }
+            else
+            {
+                $sql2="SELECT * from ".TEMPRESA." WHERE ".CEMPRESA_USUARIOEMP."='".$user."'";
+                $result=$this->conecxion->query($sql2);
+                $listdatos =$result->fetchAll();
+                return $listdatos;
+            
+            }      
+        }
+        catch(PDOException $e)
+        {
+            $this->$error=$e->getMessage();
+        }
+    }
+
+    function ObtenertipoUsuario($user){
+        try{        
+        $sql="SELECT ".CUSUARIO_TIPO." from ".TUSUARIO." WHERE ".CUSUARIO_NOMBRE."='".$user."'";
+        //echo $sql;
+        $resultado = $this->conecxion->query($sql);
+        $list = $resultado->fetchAll();    
+        //var_dump($list);
+        $tipoUsuario = $list[0][0];//Obtenemos el tipo de usuario del array resultante de list  se puede apreciar en el var_dump($list);
+       
+            if(strcmp($tipoUsuario,"alumno")==0)
+                return'alumno';
+            else    
+                return'empresa';     
+       
+                 
+        }
+        catch(PDOException $e)
+        {
+            $this->$error=$e->getMessage();
+        }
+    }
+
+
 
     //En base al usuario pasado buscamos su correo y filtramos en la tabla correo
     //select * from correo where remitente in(select email  from usuario where usuario='Maria') or destinatario in (select email  from usuario where usuario='Maria')order by fecha desc;
@@ -179,7 +228,7 @@ Devuelve V si es verdad y f si es falso.
 */
     function getCorreoEmailRemitente($emailUsuario,$remitente){
         try
-        {                  
+        {                 
             $resultadoFinal;
             $valor;         
             $sql="SELECT if('".$emailUsuario."'"."="."'".$remitente."','v','f')";
@@ -187,8 +236,10 @@ Devuelve V si es verdad y f si es falso.
             $resultado=$this->conecxion->query($sql);
             $list=$resultado->fetchAll();           
             $valor=$list[0][0];  
+           
             if($valor=='v')//Si esto se cumple es que el email del remitente es el mismo que el del usuario
-            {   //Osea mensaje ENVIADO        
+            {   //Osea mensaje ENVIADO     
+                             
                $resultadoFinal=" <div class=\"correoEnviado\">ENVIADO</div>"; 
             }
             else

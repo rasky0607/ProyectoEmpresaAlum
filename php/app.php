@@ -104,13 +104,10 @@ function print_head($title="Página SEGEMP"){
           
               <li class=\"nav-item active\">
                   <a class=\"nav-link\" href=\"#\"><img src=\"../img/buscar.png\" title=\"Buscar alumno\" width=\"50\" height=\"50\"/> <span class=\"sr-only\">(current)</span></a>
-              </li>
-              <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"correosEnviados.php\"><img src=\"../img/correoenviado.png\" title=\"Correos Enviados\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
-              </li>
+              </li>           
 
               <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"inicio.php\"><img src=\"../img/buzon.png\" title=\"Registro de todos los correos\" width=\"50\" height=\"50\"/> <span class=\"sr-only\">(current)</span></a>
+                <a class=\"nav-link\" href=\"inicio.php\"><img src=\"../img/correoenviado.png\" title=\"Correos Enviados\" width=\"50\" height=\"50\"/> <span class=\"sr-only\">(current)</span></a>
               </li>
           
                     
@@ -195,7 +192,10 @@ function print_head($title="Página SEGEMP"){
       for($i=0;$i<$result->columnCount();$i++)
       {       
          $nombreColumn = $result->getcolumnMeta($i);
-         echo "<th class=\"cabecolum\">".strtoupper($nombreColumn['name'])."</th>";
+       
+          echo "<th class=\"cabecolum\">".strtoupper($nombreColumn['name'])."</th>";
+          if($i==0)
+            echo "<th class=\"cabecolum\">Tipo de correo</th>";
          
       }
       echo "</tr>";
@@ -211,6 +211,11 @@ function print_head($title="Página SEGEMP"){
     function insertNuevoUsuario($usuario,$password,$email,$tipoUsuario)
     {
       return $this->dao->insertNuevoUsuario($usuario,$password,$email,$tipoUsuario);
+    }
+    
+    function perfilUsuario($user)
+    {
+      return $this->dao->perfilUsuario($user);
     }
     
 }

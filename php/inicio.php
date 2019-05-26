@@ -37,12 +37,13 @@ function listarFilasDeLaTabla($list,$emailUsuario,$app){
     //Datos
     foreach($list as $fila)
     {
-      
+      //Rellena la columna tipo de correo con el color del correo correspondiente
         $remitente=$fila['remitente'];  
         $tipoCorreo = $app->getCorreoEmailRemitente($emailUsuario,$remitente);     
         echo "<tr>";
         echo "<td scope=\"row\"> <a href='detalleCorreo.php?id_correo=".$fila['idCorreo']."'/>".$fila['idCorreo']."</td>".
-        "<td scope=\"row\">".$tipoCorreo.$fila['remitente']."</td>".
+        "<td scope=\"row\">"."<span id=\"marcacorreo\">".$tipoCorreo."</span>"."</td>".
+        "<td scope=\"row\">".$fila['remitente']."</td>".
         "<td scope=\"row\">".$fila['destinatario']."</td>".
         "<td scope=\"row\">".$fila['fecha']."</td>".
         "<td scope=\"row\">".$fila['asunto']."</td>";
