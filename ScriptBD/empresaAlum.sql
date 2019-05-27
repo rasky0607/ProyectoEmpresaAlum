@@ -45,7 +45,7 @@ create database  if not exists empresalum character set ='utf8mb4';
 
 
 	create table correo(
-		idCorreo integer,
+		idCorreo integer AUTO_INCREMENT,
 		remitente varchar(150) not null,
 		destinatario varchar(150) not null,
 		fecha date not null,
@@ -87,6 +87,7 @@ insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(4,'PatriciaConsoladoresSA@gmail.com','estebangomezruiz@gmail.com',20190222,'Oferta de trabajo de psicologo','Esto es el contenido del correo 4');
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(5,"TheHugoBoss@gmail.com","topete@gmail.com",20190219,"Oferta de trabajo vigilante de seguridad","Esto es el contenido del correo 5"); -- NUEVO
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(6,"LaCarmensitaRechulona@gmail.com","mariagarciamiralles@gmail.com",20190219,'El miedo en mis ojos','Esto es el contenido del correo 6.Señora, usted me impone,de hecho se me escondio el testiculo izquierdo del susuto.');
+insert into correo (remitente,destinatario,fecha,asunto,contenido)values('mariagarciamiralles@gmail.com','estebangomezruiz@gmail.com','2019-03-22','esto es una prueba','contenido de correo paca');
 
 
 
