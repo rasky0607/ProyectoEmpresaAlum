@@ -183,7 +183,8 @@ function print_head($title="Página SEGEMP"){
       return $this->dao->getCorreoEmailRemitente($emailUsuario,$remitente);
     }
 
-    //Funcion que pinta la cabecera de una tabla con estilos de boostrap
+    /*Funcion que pinta la cabecera de una tabla con estilos de boostrap
+     Para LISTADO de CORREOS*/
     function mostrarCabecerasDeTabla($result){
       echo "<table class=\"table table-striped table-dark table-bordered\>";
       echo"<thead>";
@@ -217,5 +218,9 @@ function print_head($title="Página SEGEMP"){
       return $this->dao->perfilUsuario($user);
     }
     
+    function buscarEmail($emailAbuscar)
+    {
+      return $this->dao->buscarEmail($emailAbuscar);
+    }
 }
 ?>

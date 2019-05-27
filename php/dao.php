@@ -299,6 +299,22 @@ Devuelve V si es verdad y f si es falso.
             $this->$error=$e->getMessage();
         }
     }
+//select email from usuario where email rlike '.*t.*' and tipoUsuario='alumno';
+
+    function buscarEmail($emailAbuscar)
+    {
+        try{
+            
+        $sql="SELECT ".CUSUARIO_NOMBRE.",".CUSUARIO_EMAIL." FROM ".TUSUARIO." WHERE ".CUSUARIO_EMAIL." RLIKE '^".$emailAbuscar."' AND ".CUSUARIO_TIPO."='alumno'";
+        //echo $sql;
+        $resultado = $this->conecxion->query($sql);
+        return $resultado;
+        }
+        catch(PDOException $e){
+            $this->$error=$e->getMessage();
+        }
+
+    }
    
    
    
