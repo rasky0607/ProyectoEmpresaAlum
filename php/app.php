@@ -86,6 +86,10 @@ function print_head($title="Página SEGEMP"){
               <li class=\"nav-item active\">
                 <a class=\"nav-link\" href=\"inicio.php\"><img src=\"../img/buzon.png\" title=\"Registro de todos los correos\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>            
               </li>
+
+              <li class=\"nav-item active\">
+              <a class=\"nav-link\" href=\"listarEmpresas.php\"><img src=\"../img/empresa.png\" title=\"Listado de empresas\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>            
+            </li>
                              
               </ul>
              <span class=\"navbar-brand mb-0 h1\"><a class=\"nav-link\" href=\"logout.php\">Cerrar sesión</a></span>
@@ -195,7 +199,7 @@ function print_head($title="Página SEGEMP"){
        
           echo "<th class=\"cabecolum\">".strtoupper($nombreColumn['name'])."</th>";
           if($i==0)
-            echo "<th class=\"cabecolum\">Tipo de correo</th>";
+            echo "<th class=\"cabecolum\">TIPO DE CORREO</th>";
          
       }
       echo "</tr>";
@@ -221,6 +225,35 @@ function print_head($title="Página SEGEMP"){
     function buscarEmail($emailAbuscar)
     {
       return $this->dao->buscarEmail($emailAbuscar);
+    }
+    function insercionMensaje($emailRemitente,$emailDestino,$asunto,$contenido)
+    {
+      return $this->dao->insercionMensaje($emailRemitente,$emailDestino,$asunto,$contenido);
+    }
+    function listarEmpresas()
+    {
+      return $this->dao->listarEmpresas();
+    }
+    function tipoUsuario2($usuario)
+    {
+      return $this->dao->tipoUsuario2($usuario);
+    }
+    function listarAlumnos($usuario)
+    {
+      return $this->dao->listarAlumnos($usuario);
+    }
+    function listarAlumnosParaEmp($apellidos,$anioPromocion)
+    {
+      return $this->dao->listarAlumnosParaEmp($apellidos,$anioPromocion);
+    }
+
+    function updatePerfilUsuario($usuario,$nombre,$apellidos,$anioPromocion,$trabajaEn,$fechaContrato)
+    {
+      return $this->dao->updatePerfilUsuario($usuario,$nombre,$apellidos,$anioPromocion,$trabajaEn,$fechaContrato);
+    }
+    function updatePerfilEmpresa($usuario,$nombre,$direccion,$telefono,$nombreContacto)
+    {
+      return $this->dao->updatePerfilEmpresa($usuario,$nombre,$direccion,$telefono,$nombreContacto);
     }
 }
 ?>

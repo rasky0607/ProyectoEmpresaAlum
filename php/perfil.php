@@ -20,6 +20,7 @@ $tipoUsuario = $app->getDao()->ObtenertipoUsuario($app->nombreUsuario());
 
 if(strcmp($tipoUsuario,'alumno')==0)
 {
+    
     $usuarioAlum=$list[0][0];
     $nombre=$list[0][1];
     $apellidos=$list[0][2];
@@ -29,8 +30,12 @@ if(strcmp($tipoUsuario,'alumno')==0)
     $fechaContrato=$list[0][6];
     //echo $list[0][5];
 
+
+    //echo "hola";
+
     echo "
     <div class=\"container\">
+    </script>
         <div class=\"row\">
         <!--col-md- lo que ocupa los componentes de la pagina -->
         <!--offset-md- numero de columnas que debe dejar en los marjenes -->
@@ -42,23 +47,23 @@ if(strcmp($tipoUsuario,'alumno')==0)
                 </div>               
                     <div class=\"from-group\">
                         <label for=\"user\">Usuario:</label>
-                        <input id=\"user\" name=\"user\" type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$usuarioAlum\" >
+                        <input id=\"user\" name=\"user1\" type=\"text\" \" requiered=\"requiered\" class=\"form-control\" value=\"$usuarioAlum\" readonly >
                     </div>
                     <div class=\"from-group\">
                         <label for=\"NombreAlum\">Nombre alumno:</label>
-                        <input id=\"NombreAlum\" name=\"NombreAlum\" type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$nombre\">
+                        <input id=\"NombreAlum\" name=\"NombreAlum\" onchange=\"function1() type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$nombre\">
                     </div>
                     <div class=\"from-group\">
                         <label for=\"apellidos\">Apellidos:</label>
-                        <input id=\"apellidos\" name=\"apellidos\" type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$apellidos\">
+                        <input id=\"apellidos\" name=\"apellidos\" onchange=\"function1() type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$apellidos\">
                     </div>
                     <div class=\"from-group\">
                         <label for=\"email\">Email:</label>
-                        <input id=\"email\" name=\"email\" type=\"email\"  value=\"$email\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"email\" name=\"email\" onchange=\"function1() type=\"email\"  value=\"$email\" requiered=\"requiered\" class=\"form-control\">
                     </div>
                     <div class=\"from-group\">
                         <label for=\"anioPromocion\">Promocion del:</label>
-                        <input id=\"anioPromocion\" name=\"anioPromocion\" type=\"number\"  value=\"$anioPromocion\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"anioPromocion\" name=\"anioPromocion\" onchange=\"function1() type=\"number\"  value=\"$anioPromocion\" requiered=\"requiered\" class=\"form-control\">
                     </div>
                     <div class=\"text-center\">
                     <hr/>
@@ -69,24 +74,29 @@ if(strcmp($tipoUsuario,'alumno')==0)
         
                     <div class=\"from-group\">
                         <label for=\"trabajaEn\">Trabajas en:</label>
-                        <input id=\"trabajaEn\" name=\"trabajaEn\" type=\"text\"  value=\"$trabajaEn\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"trabajaEn\" name=\"trabajaEn\" onchange=\"function1() type=\"text\"  value=\"$trabajaEn\" requiered=\"requiered\" class=\"form-control\">
                     </div>
                     <div class=\"from-group\">
                         <label for=\"fechaContrato\">Fecha de contratación:</label>
-                        <input id=\"fechaContrato\" name=\"fechaContrato\" type=\"date\"  value=\"$fechaContrato\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"fechaContrato\" name=\"fechaContrato\" onchange=\"function1() type=\"date\"  value=\"$fechaContrato\" requiered=\"requiered\" class=\"form-control\">
                     </div>
                     <br/>
     
                     <hr/>               
                     <div class=\"text-center\">
                         <a href=\"inicio.php\" class=\"btn btn-primary\">Volver</a>
-                        <input type=\"submit\" value=\"Guardar cambios\" class=\"btn btn-primary\">                                   
+                        <a class=\"btn btn-primary\" href=\"insertDatosPerfilAlum.php\" class=\"btn btn-primary\">Rellenar tus datos</a>                                   
                     </div>
                     
                 </form>
             </div>
         </div>
     </div>";
+    
+      
+       // echo $usuarioAlum." ".$nombre." ".$apellidos." ".$anioPromocion." ".$estadoLaboral." ".$trabajaEn." ".$fechaContrato;
+       // $app->updatePerfilUsuario($usuarioAlum,$nombre,$apellidos,$anioPromocion,$estadoLaboral,$trabajaEn,$fechaContrato);
+
 }
 
 // Perfil Empresa
@@ -112,7 +122,7 @@ if(strcmp($tipoUsuario,'empresa')==0)
                 </div>               
                     <div class=\"from-group\">
                         <label for=\"user\">Usuario:</label>
-                        <input id=\"user\" name=\"user\" type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$usuarioEmp\" >
+                        <input id=\"user\" name=\"user\" type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$usuarioEmp\" readonly >
                     </div>
                     <div class=\"from-group\">
                         <label for=\"NombreEmp\">Nombre de empresa:</label>
@@ -135,7 +145,7 @@ if(strcmp($tipoUsuario,'empresa')==0)
                     <hr/>               
                     <div class=\"text-center\">
                         <a href=\"inicio.php\" class=\"btn btn-primary\">Volver</a>
-                        <input type=\"submit\" value=\"Guardar cambios\" class=\"btn btn-primary\">                                   
+                        <a class=\"btn btn-primary\" href=\"insertDatosPerfilEmp.php\" class=\"btn btn-primary\">Rellenar tus datos</a>                                       
                     </div>
                 
                 </form>

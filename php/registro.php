@@ -57,11 +57,13 @@ if(!empty($usuario)&&!empty($email))
 {
     if($password==$confirPassword)
     {
-        if($app->insertNuevoUsuario($usuario,$password,$email,$tipoUsuario))
+        if($result=$app->insertNuevoUsuario($usuario,$password,$email,$tipoUsuario))
         {
+            var_dump($result);
             echo"<p class=\"text-center\"><a id=\"marcacorrecto\">Usuario creado con exito!.</a></p>";
         }else{
             echo"<p class=\"text-center\"><a id=\"marcaerror\">*</a>Fallo al crear el usuario.</p>";
+            var_dump($result);
         }
     }
     else

@@ -102,6 +102,31 @@ class Dao{
             $this->$error=$e->getMessage();
         }
     }
+    //Devuelve especificamente el tipo de usuario
+    function tipoUsuario2($user){
+        try{
+        $sql="SELECT ".CUSUARIO_TIPO." from ".TUSUARIO." WHERE ".CUSUARIO_NOMBRE."='".$user."'";
+        //echo $sql;
+        $resultado = $this->conecxion->query($sql);
+        $list = $resultado->fetchAll();    
+        //var_dump($list);
+        $tipoUsuario = $list[0][0];//Obtenemos el tipo de usuario del array resultante de list  se puede apreciar en el var_dump($list);
+       
+            if(strcmp($tipoUsuario,"alumno")==0)
+            {
+                return "alumno";
+            }
+            else
+            {
+                return "empresa";
+            
+            }      
+        }
+        catch(PDOException $e)
+        {
+            $this->$error=$e->getMessage();
+        }
+    }
     function perfilUsuario($user){
         try{
            $tipoUsuario =$this->ObtenertipoUsuario($user);      
@@ -199,7 +224,7 @@ class Dao{
      function getCorresEnviados($emailUsuario){
         try
         {        
-            $sql="SELECT ".CCORREO_ID.",".CCORREO_REMITENTE.",".CCORREO_DESTINATARIO.",".CCORREO_FECHA.",".CCORREO_ASUNTO." FROM ".TCORREO. " WHERE ".CCORREO_REMITENTE." LIKE '".$emailUsuario."'";
+            $sql="SELECT ".CCORREO_ID.",".CCORREO_DESTINATARIO.",".CCORREO_FECHA.",".CCORREO_ASUNTO." FROM ".TCORREO. " WHERE ".CCORREO_REMITENTE." LIKE '".$emailUsuario."'";
             //echo $sql;
             $resultado=$this->conecxion->query($sql);                               
             return $resultado;        
@@ -280,14 +305,14 @@ Devuelve V si es verdad y f si es falso.
             $resultado=$this->conecxion->query($sql);
             if(strcmp($tipoUsuario,'alumno')==0)
             {
-                echo "alumno!";
+                //echo "alumno!";
                 $sql2="INSERT INTO ".TALUMNO."(".CALUMNO_USUARIOALUM.")VALUES('".$usuario."')";
-                echo $sql2;
+                //echo $sql2;
                 $resultado2=$this->conecxion->query($sql2);
 
             }
             else{
-                echo "empresa";
+                //echo "empresa";
                 $sql2="INSERT INTO ".TEMPRESA."(".CEMPRESA_USUARIOEMP.")VALUES('".$usuario."')";
                 $resultado2=$this->conecxion->query($sql2);
             }
@@ -315,24 +340,131 @@ Devuelve V si es verdad y f si es falso.
         }
 
     }
-   
-   
-   
-   
-   
-    /*
-    //Funcion comodin para convertir una coleccion con un unico valor o consulta con un unico resultado
-    en unico dato guardado ya en una variable
-    function ExtraerResultadoUnico($coleccionBD,$campo)
+   /* insert into correo (remitente,destinatario,fecha,asunto,contenido)values
+   ('mariagarciamiralles@gmail.com','estebangomezruiz@gmail.com','2019-03-22','esto es una prueba','contenido de correo paca');
+*/ 
+    function insercionMensaje($emailRemitente,$emailDestino,$asunto,$contenido)
     {
-        $list=$coleccionBD->fetchAll();
-        $resultado = $list[0][$campo];
-        echo $resultado;
-        return $resultado;
-    }*/
-    //PENDIENTE
-    //INTENTANDO QUE DEVUELVA UN  UNICO RESULTADO
-    //Ejemplo cogido de http://notasweb.com/articulo/php/obtener-un-campo-de-una-base-de-datos-mysql-en-php.html
+        try
+        {
+            $sql="INSERT INTO ".TCORREO."(".CCORREO_REMITENTE.",".CCORREO_DESTINATARIO.",".CCORREO_FECHA.",".CCORREO_ASUNTO.",".CCORREO_CONTENIDO.") VALUES "."('".$emailRemitente."','".$emailDestino."',curdate(),'".$asunto."','".$contenido."')";
+            //echo $sql;
+            $resultado=$this->conecxion->query($sql);
+            return $resultado;
 
+        }
+        catch (PDOException $e)
+        {
+            $this->$error=$e->getMessage();
+        }
+        
+    }
+
+    function listarEmpresas()
+    {
+        try
+        {
+            $sql="SELECT ".CEMPRESA_NOMBRE.",".CEMPRESA_DIRECCION." FROM ".TEMPRESA;
+            //echo $sql;
+            $resultado=$this->conecxion->query($sql);
+            return $resultado;
+
+        }
+        catch (PDOException $e)
+        {
+            $this->$error=$e->getMessage();
+        }
+        
+    }
+
+    function listarAlumnos($usuario)
+    {
+        try
+        {
+            $sql="SELECT ".CALUMNO_USUARIOALUM.",".CALUMNO_NOMBRE.",".CALUMNO_APELLIDOS.",".CALUMNO_ANIOPROMOCION." FROM ".TALUMNO." WHERE ".CALUMNO_USUARIOALUM."!='".$usuario."'";
+            //echo $sql;
+            $resultado=$this->conecxion->query($sql);
+            return $resultado;
+
+        }
+        catch (PDOException $e)
+        {
+            $this->$error=$e->getMessage();
+        }
+        
+    }
+   //select a.usuarioAlum,a.nombre,a.apellidos,u.email from alumno a join usuario u on a.usuarioAlum=u.usuario having a.apellidos rlike '^.*Max Turbado.*';
+//select a.usuarioAlum,a.nombre,a.apellidos,a.anioPromocion,u.email from alumno a join usuario u on a.usuarioAlum=u.usuario having a.apellidos rlike'^.*Max turbado.*' and a.anioPromocion=2017;
+
+   function listarAlumnosParaEmp($apellidos,$anioPromocion)
+   {
+       try
+       {
+           if(empty($anioPromocion))
+           {
+            $sql="select a.usuarioAlum,a.nombre,a.apellidos,a.anioPromocion,u.email from alumno a join usuario u on a.usuarioAlum=u.usuario having a.apellidos rlike'^.*".$apellidos.".*'";
+           }else if(empty($apellidos))
+           {
+            $sql="select a.usuarioAlum,a.nombre,a.apellidos,a.anioPromocion,u.email from alumno a join usuario u on a.usuarioAlum=u.usuario having a.anioPromocion=".$anioPromocion;
+           }
+           else
+           {
+            $sql="select a.usuarioAlum,a.nombre,a.apellidos,a.anioPromocion,u.email from alumno a join usuario u on a.usuarioAlum=u.usuario having a.apellidos rlike'^.*".$apellidos.".*' and a.anioPromocion=".$anioPromocion;
+           }
+           //echo $sql;
+           $resultado=$this->conecxion->query($sql);
+           return $resultado;
+
+       }
+       catch (PDOException $e)
+       {
+           $this->$error=$e->getMessage();
+       }
+       
+   }
+   function updatePerfilUsuario($usuario,$nombre,$apellidos,$anioPromocion,$trabajaEn,$fechaContrato)
+   {
+    try
+    {
+        //update alumno SET nombre='test1',anioPromocion='2009' where usuarioAlum='test1';
+        if(!empty($trabajaEn)&& !empty($fechaContrato))
+        {
+            $sql="UPDATE ".TALUMNO." SET nombre='".$nombre."',apellidos='".$apellidos."',anioPromocion=".$anioPromocion.",trabajaEn='".$trabajaEn."',fechaContrato='".$fechaContrato."' WHERE ".CALUMNO_USUARIOALUM."='".$usuario."'";
+        }else{
+            $sql="UPDATE ".TALUMNO." SET nombre='".$nombre."',apellidos='".$apellidos."',anioPromocion=".$anioPromocion.",trabajaEn=NULL,fechaContrato=NULL WHERE ".CALUMNO_USUARIOALUM."='".$usuario."'";
+        }
+  
+        //echo $sql;
+        $resultado=$this->conecxion->query($sql);
+        return $resultado;
+
+    }
+    catch (PDOException $e)
+    {
+        $this->$error=$e->getMessage();
+    }
+   }
+
+   //PENDIENTE
+   function updatePerfilEmpresa($usuario,$nombre,$direccion,$telefono,$nombreContacto)
+   {
+    try
+    {
+        //update alumno SET nombre='test1',anioPromocion='2009' where usuarioAlum='test1';
+   
+        $sql="UPDATE ".TEMPRESA." SET nombre='".$nombre."',direccion='".$direccion."',telefono='".$telefono."',nombreContacto='".$nombreContacto."' WHERE ".CEMPRESA_USUARIOEMP."='".$usuario."'";
+         
+        //echo $sql;
+        $resultado=$this->conecxion->query($sql);
+        return $resultado;
+
+    }
+    catch (PDOException $e)
+    {
+        $this->$error=$e->getMessage();
+    }
+   }
+   
+    
 }
 ?>
