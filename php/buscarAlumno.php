@@ -10,33 +10,6 @@ $emailUsuario = $app-> getEmailUsuario(App::nombreUsuario());
 $app->getDao()->tipoUsuario(App::nombreUsuario());//Coloca un nav u otro segun el tipo de usuario
 $tipoUsuario= $app->tipoUsuario2(App::nombreUsuario());//devuelve el tipo exacto de usuario
 
-
-//Si es un ALUNO
-if(strcmp($tipoUsuario,'alumno')==0)
-{
-    $result=$app->listarAlumnos(App::nombreUsuario());
-    $list=$result->fetchAll();
-    mostrarCabecerasDeTablaAlum($result);
-    listarFilasDeLaTablaAlum($list);
-    if(!isset($_POST['enviar']))
-    {
-        echo"1";
-        if(!isset($_POST['marcados']))
-        {
-            echo"ENTREEEE";
-            $destino= $_POST['marcados'];
-        }
-        else{
-            echo"NOOO";
-        }
-    }
-    else{
-        echo"2";
-    }
-  
-  
-}
-else{//Si es EMPRESA
     echo"
     <div class=\"container\">
     <div class=\"row\">
@@ -66,8 +39,7 @@ else{//Si es EMPRESA
             </form>
         </div>
     </div>
-</div>
-    ";
+</div>";
 
     if(!isset($_POST['buscar'])&& isset($_POST['todos']))//Muestra todos
     {
@@ -98,26 +70,9 @@ else{//Si es EMPRESA
     }
     
     
-}
+
 
   //Funciones
-function mostrarCabecerasDeTablaAlum($result){
-    echo "<br><hr/>";
-    echo "<h3 class=\"text-center\">Listado de alumnos y Exalumnos</h3>";
-    echo "<hr/>";
-    echo "<table class=\"table table-striped table-dark table-bordered\>";
-    echo"<thead>";
-    echo "<tr <div class=\"p-3 mb-2 bg-success text-white\">";
-    for($i=0;$i<$result->columnCount();$i++)
-    {       
-    $nombreColumn = $result->getcolumnMeta($i);
-    
-        echo "<th class=\"cabecolum\">".strtoupper($nombreColumn['name'])."</th>";
-    
-    }
-    echo "</tr>";
-    echo "</thead>";
-}
 
 
 function mostrarCabecerasDeTablaEmp($result){
@@ -158,46 +113,8 @@ function listarFilasDeLaTablaEmp($list){
     echo "</div>";
     
 }
-  
-function listarFilasDeLaTablaAlum($list){
-   // echo "<tbody class=\"tablalistado\">";
-    //Datos
-    echo " <div class=\"form-group\">
-        <label for=\"email\">Para:    <br></label><p>";
-    echo "<select class=\"selectpicker\" multiple data-actions-box=\"true\" data-width=\"fit\" id='destinatario' name='destinatario[]'>";
-    foreach($list as $fila)
-    {   
-        
- 
-         echo "<option data-subtext=" . $fila['nombre'] . '&nbsp;' . $fila['apellidos'] . ">" . $fila['anioPromocion'] . "</option>";
-        
-       
-        echo "</div>";
 
-/*
-        echo "<tr>";
-    
-        echo "<td scope=\"row\">"."<input name='marcados[]' type=\"checkbox\">".$fila['usuarioAlum']."</td>".
-            "<td scope=\"row\">".$fila['nombre']."<img src=\"../img/enviarMensaje.png\"  width=\"27\" height=\"27\"/></a>"."</td>".
-            "<td scope=\"row\">".$fila['apellidos']."</td>".
-            "<td scope=\"row\">".$fila['anioPromocion']."</td>";*/
-            
-        
-        echo "</tr>";
-      
-    }
-    echo "</select>";
-   /* echo "</tbody>";
-    echo "</table>";
-    echo "</div>";*/
-    echo"<div class=\"text-center\">
-    <a href=\"inicio.php\" class=\"btn btn-primary\">Volver</a>
-    <input type=\"submit\" value=\"Enviar\" name=\"enviar\" class=\"btn btn-primary\">                                   
-    </div>";
-}
   
-  
-
 
 
 ?>

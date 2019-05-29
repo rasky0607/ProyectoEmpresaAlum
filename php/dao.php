@@ -381,7 +381,8 @@ Devuelve V si es verdad y f si es falso.
     {
         try
         {
-            $sql="SELECT ".CALUMNO_USUARIOALUM.",".CALUMNO_NOMBRE.",".CALUMNO_APELLIDOS.",".CALUMNO_ANIOPROMOCION." FROM ".TALUMNO." WHERE ".CALUMNO_USUARIOALUM."!='".$usuario."'";
+            //$sql="SELECT ".CALUMNO_USUARIOALUM.",".CALUMNO_NOMBRE.",".CALUMNO_APELLIDOS.",".CALUMNO_ANIOPROMOCION." FROM ".TALUMNO." WHERE ".CALUMNO_USUARIOALUM."!='".$usuario."'";
+            $sql="select u.email,a.usuarioAlum,a.nombre,a.apellidos,a.anioPromocion from alumno a join usuario u on a.usuarioAlum=u.usuario HAVING a.usuarioAlum!='".$usuario."'";
             //echo $sql;
             $resultado=$this->conecxion->query($sql);
             return $resultado;
@@ -465,6 +466,7 @@ Devuelve V si es verdad y f si es falso.
     }
    }
    
+  
     
 }
 ?>

@@ -120,7 +120,18 @@ DELIMITER #
 	 		end if;
 	 		
 	 	END#
-	 	 drop trigger if exists empresalum.aialumno#
+	 drop trigger if exists empresalum.aiusuario#
+	 create trigger empresalum.aiusuario after insert on usuario
+	 	for each row
+	 	BEGIN
+	 		if new.tipoUsuario='alumno' then
+	 			 	insert into alumno(usuarioAlum)values(new.usuario); 		
+	 		end if;
+
+	 		if new.tipoUsuario='empresa' then
+	 			 	insert into empresa(usuarioEmp)values(new.usuario);
+	 		end if;
+	 	END#
 
 
 DELIMITER ;

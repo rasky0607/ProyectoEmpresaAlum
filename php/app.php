@@ -77,7 +77,7 @@ function print_head($title="Página SEGEMP"){
               <ul class=\"navbar-nav mr-auto\">
           
               <li class=\"nav-item active\">
-                  <a class=\"nav-link\" href=\"buscarAlumno.php\"><img src=\"../img/contactar.png\" title=\"Contactar con exalumno\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
+                  <a class=\"nav-link\" href=\"ContactoAlumnos.php\"><img src=\"../img/contactar.png\" title=\"Contactar con exalumno\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
               </li>
               <li class=\"nav-item active\">
                 <a class=\"nav-link\" href=\"correosEnviados.php\"><img src=\"../img/correoenviado.png\" title=\"Correos Enviados\" width=\"50\" height=\"50\"/><span class=\"sr-only\">(current)</span></a>
@@ -142,6 +142,10 @@ function print_head($title="Página SEGEMP"){
       function nombreUsuario(){
         return strtoupper($_SESSION['user']);
       }
+
+      function emailsAEnviar(){
+        return $_SESSION['email'];
+      }
       //Función que redirige a a Login
       function showLogin(){
           //Petición a una cabecera.
@@ -154,6 +158,10 @@ function print_head($title="Página SEGEMP"){
         function saveSession($user){
           $_SESSION['user']=$user;
         }
+        function saveSessionEmail($email){
+          $_SESSION['email']=$email;
+        }
+        
 
         function invalidateSession(){
           session_start();//Para iniciar una sesion o reanuda una existente (funcion propia de php)
@@ -255,5 +263,7 @@ function print_head($title="Página SEGEMP"){
     {
       return $this->dao->updatePerfilEmpresa($usuario,$nombre,$direccion,$telefono,$nombreContacto);
     }
+
+   
 }
 ?>
