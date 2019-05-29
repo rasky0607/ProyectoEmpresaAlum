@@ -1,11 +1,15 @@
 <?php
-echo"<h3 class=\"text-center\">Tus datos:</h3>";
 include_once("app.php");
 $app = new App();
 $app -> validateSession();
 App::print_head("Perfil ");
 $nombreUsuario=App::nombreUsuario();
 //Preguntamos que tipo de usuario es para mostrar un nav u otro
+$app->getDao()->tipoUsuario(App::nombreUsuario());//Coloca un nav u otro segun el tipo de usuario
+echo"<h3 class=\"text-center\">Actualizar datos:</h3>";
+$m=3242;
+
+var_dump(strlen($m));
 $list = $app->perfilUsuario(App::nombreUsuario());
 
 //--Preparacion--//
@@ -36,7 +40,7 @@ echo "
                 </div>
                 <div class=\"from-group\">
                     <label for=\"telefono\">Telefono:</label>
-                    <input id=\"telefono\" name=\"telefono\" type=\"number\"   requiered=\"requiered\" class=\"form-control\">
+                    <input id=\"telefono\" name=\"telefono\" type=\"number\"   requiered=\"requiered\" class=\"form-control\" maxlength=\"9\" minlength=\"9\">
                 </div>
                 <div class=\"from-group\">
                     <label for=\"nombreContacto\">Nombre de contacto:</label>
@@ -64,12 +68,17 @@ if($_POST['guardar'])
 {
     if(!empty($usuarioEmp) &&!empty($nombre) &&!empty($direccion) &&!empty($telefono) &&!empty($nombreContacto))
     {
-
-        if($app->updatePerfilEmpresa($usuarioEmp,$nombre,$direccion,$telefono,$nombreContacto));
+        if(strlen($telefono)==9)
         {
-            echo "<script type=\"text/javascript\"> alert('¡Datos guardados con exito!.');
-            </script>";
-            echo "<script languaje=\"javascript\">window.location.href=\"perfil.php\"</script>";
+            if($app->updatePerfilEmpresa($usuarioEmp,$nombre,$direccion,$telefono,$nombreContacto));
+            {
+                echo "<script type=\"text/javascript\"> alert('¡Datos guardados con exito!.');
+                </script>";
+                echo "<script languaje=\"javascript\">window.location.href=\"perfil.php\"</script>";
+            }
+        }else{
+            echo "<script type=\"text/javascript\"> alert('¡El telefono debe tener al menos 9 numeros!.');
+        </script>";
         }
 
     }else

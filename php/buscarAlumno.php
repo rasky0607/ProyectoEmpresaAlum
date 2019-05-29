@@ -57,9 +57,9 @@ $tipoUsuario= $app->tipoUsuario2(App::nombreUsuario());//devuelve el tipo exacto
         $anioPromocion=$_POST['anioPromocion'];
        //Consulta de el dao
        $result=$app->listarAlumnosParaEmp($apellidos,$anioPromocion);
+       $list=$result->fetchAll(); 
        if(count($list)>0)
-       {
-        $list=$result->fetchAll(); 
+       {     
         mostrarCabecerasDeTablaEmp($result);
         listarFilasDeLaTablaEmp($list);
        }else

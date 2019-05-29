@@ -1,11 +1,14 @@
 <?php
-echo"<h3 class=\"text-center\">Tus datos:</h3>";
+
 include_once("app.php");
 $app = new App();
 $app -> validateSession();
 App::print_head("Perfil ");
 $nombreUsuario=App::nombreUsuario();
 //Preguntamos que tipo de usuario es para mostrar un nav u otro
+$app->getDao()->tipoUsuario(App::nombreUsuario());//Coloca un nav u otro segun el tipo de usuario
+echo"<h3 class=\"text-center\">Actualizar datos:</h3>";
+
 $list = $app->perfilUsuario(App::nombreUsuario());
 //--Preparacion--//
 $email=$app-> getEmailUsuario(App::nombreUsuario());

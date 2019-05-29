@@ -1,10 +1,13 @@
 <?php
-echo"<h3 class=\"text-center\">Tus datos:</h3>";
+
 include_once("app.php");
 $app = new App();
 $app -> validateSession();
 App::print_head("Perfil ");
 //Preguntamos que tipo de usuario es para mostrar un nav u otro
+//Preguntamos que tipo de usuario es para mostrar un nav u otro
+$app->getDao()->tipoUsuario(App::nombreUsuario());//Coloca un nav u otro segun el tipo de usuario
+//echo"<h3 class=\"text-center\">Tus datos:</h3>";
 $list = $app->perfilUsuario(App::nombreUsuario());
 
 //--Preparacion--//
@@ -51,34 +54,34 @@ if(strcmp($tipoUsuario,'alumno')==0)
                     </div>
                     <div class=\"from-group\">
                         <label for=\"NombreAlum\">Nombre alumno:</label>
-                        <input id=\"NombreAlum\" name=\"NombreAlum\" onchange=\"function1() type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$nombre\">
+                        <input id=\"NombreAlum\" name=\"NombreAlum\" onchange=\"function1() type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$nombre\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"apellidos\">Apellidos:</label>
-                        <input id=\"apellidos\" name=\"apellidos\" onchange=\"function1() type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$apellidos\">
+                        <input id=\"apellidos\" name=\"apellidos\" onchange=\"function1() type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$apellidos\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"email\">Email:</label>
-                        <input id=\"email\" name=\"email\" onchange=\"function1() type=\"email\"  value=\"$email\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"email\" name=\"email\" onchange=\"function1() type=\"email\"  value=\"$email\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"anioPromocion\">Promocion del:</label>
-                        <input id=\"anioPromocion\" name=\"anioPromocion\" onchange=\"function1() type=\"number\"  value=\"$anioPromocion\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"anioPromocion\" name=\"anioPromocion\" onchange=\"function1() type=\"number\"  value=\"$anioPromocion\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <div class=\"text-center\">
                     <hr/>
                     </br>
                     <label for=\"estadoLaboral\">Estado laboral:</label><br/>
-                    <input id=\"estadoLaboral\" name=\"estadoLaboral\" type=\"text\"  value=\"$estadoLaboral\" requiered=\"requiered\" class=\"form-control\" readonly=\"readonly\">
+                    <input id=\"estadoLaboral\" name=\"estadoLaboral\" type=\"text\"  value=\"$estadoLaboral\" requiered=\"requiered\" class=\"form-control\" readonly=\"readonly\" readonly>
                     </div>   
         
                     <div class=\"from-group\">
                         <label for=\"trabajaEn\">Trabajas en:</label>
-                        <input id=\"trabajaEn\" name=\"trabajaEn\" onchange=\"function1() type=\"text\"  value=\"$trabajaEn\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"trabajaEn\" name=\"trabajaEn\" onchange=\"function1() type=\"text\"  value=\"$trabajaEn\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"fechaContrato\">Fecha de contratación:</label>
-                        <input id=\"fechaContrato\" name=\"fechaContrato\" onchange=\"function1() type=\"date\"  value=\"$fechaContrato\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"fechaContrato\" name=\"fechaContrato\" onchange=\"function1() type=\"date\"  value=\"$fechaContrato\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <br/>
     
@@ -108,7 +111,6 @@ if(strcmp($tipoUsuario,'empresa')==0)
     $telefono=$list[0][3];
     $nombreContacto=$list[0][4];
     //echo $list[0][5];
-
     echo "
     <div class=\"container\">
         <div class=\"row\">
@@ -126,19 +128,19 @@ if(strcmp($tipoUsuario,'empresa')==0)
                     </div>
                     <div class=\"from-group\">
                         <label for=\"NombreEmp\">Nombre de empresa:</label>
-                        <input id=\"NombreEmp\" name=\"NombreEmp\" type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$nombre\">
+                        <input id=\"NombreEmp\" name=\"NombreEmp\" type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$nombre\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"direccion\">Direccion:</label>
-                        <input id=\"direccion\" name=\"direccion\" type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$direccion\">
+                        <input id=\"direccion\" name=\"direccion\" type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$direccion\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"telefono\">Telefono:</label>
-                        <input id=\"telefono\" name=\"telefono\" type=\"number\"  value=\"$telefono\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"telefono\" name=\"telefono\" type=\"number\"  value=\"$telefono\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"nombreContacto\">Nombre de contacto:</label>
-                        <input id=\"nombreContacto\" name=\"nombreContacto\" type=\"text\"  value=\"$nombreContacto\" requiered=\"requiered\" class=\"form-control\">
+                        <input id=\"nombreContacto\" name=\"nombreContacto\" type=\"text\"  value=\"$nombreContacto\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <br/>
    

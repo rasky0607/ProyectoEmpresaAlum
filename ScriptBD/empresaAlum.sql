@@ -73,12 +73,12 @@ insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral,tra
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral,trabajaEn,fechaContrato)VALUES ('Maria','Maria','Garcia Miralles',2019,'Activo','Monitora de ginasia ritmica','20100122');
 insert into alumno (usuarioAlum,nombre,apellidos,anioPromocion)VALUES ('topete','Topete','Max Turbado',2017);
 insert into alumno(usuarioAlum,nombre,apellidos,anioPromocion,estadoLaboral) values("CarmenDeMairena","Carmen","De Mairena Montenegro",2010,"En paro");
-insert into alumno (usuarioAlum)VALUES ('test1');
+insert into alumno (usuarioAlum,nombre)VALUES ('test1','test1');
 
-insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('HugoBoss','The Hugo Boss','Calle de la piruleta','696969696','Hugo Madrid');
+insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('HugoBoss','The Hugo Boss S.A.','Calle de la piruleta','696969696','Hugo Madrid');
 insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values('PatriCons','Patricia consoladores S.A.','Calle de la UCA','969696969','Patricia Barrilado Carranque');
-insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values("caracol","Caracol derrapador poco mordedor","Plaza caracola cuadrada",667907349,"Caracolis Herectus");
-insert into empresa (usuarioEmp)VALUES ('test2');
+insert into empresa (usuarioEmp,nombre,direccion,telefono,nombreContacto) values("caracol","Caracol derrapador poco mordedor S.L","Plaza caracola cuadrada",667907349,"Caracolis Herectus");
+insert into empresa (usuarioEmp,nombre)VALUES ('test2','test2 S.L');
 
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(1,'estebangomezruiz@gmail.com','mariagarciamiralles@gmail.com',20190119,'¿Que pasa paca?','Esto es el contenido del correo 1');
 insert into correo(idCorreo,remitente,destinatario,fecha,asunto,contenido)values(2,'mariagarciamiralles@gmail.com','estebangomezruiz@gmail.com',20190119,'Aburrida','Esto es el contenido del correo 2');
