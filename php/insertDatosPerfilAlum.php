@@ -14,8 +14,6 @@ $list = $app->perfilUsuario(App::nombreUsuario());
 $email=$app-> getEmailUsuario(App::nombreUsuario());
 $anio = date('Y');
 $fecha= date('d/m/Y');
-
-
   echo "
   <div class=\"container\">
       <div class=\"row\">
@@ -65,12 +63,14 @@ $fecha= date('d/m/Y');
       </div>
   </div>";
 
+if(isset($_POST['NombreAlum'])){
   $usuarioAlum=$_POST['user'];
   $nombre=$_POST['NombreAlum'];
   $apellidos=$_POST['apellidos'];
   $anioPromocion=$_POST['anioPromocion'];
   $trabajaEn=$_POST['trabajaEn'];
   $fechaContrato=$_POST['fechaContrato'];
+}
 
 if(!empty($usuarioAlum) &&!empty($nombre) &&!empty($apellidos) &&!empty($anioPromocion) &&!empty($trabajaEn) &&!empty($fechaContrato))
 {
@@ -106,5 +106,10 @@ else if(!empty($usuarioAlum) &&!empty($nombre) &&!empty($apellidos) &&!empty($an
         }
     }
 
+}
+else
+{
+    echo "<script type=\"text/javascript\"> alert('¡Los campos Nombre de alumno, Apellidos, Email y Año de promocion son obligatorios!.');
+    </script>";
 }
 ?>

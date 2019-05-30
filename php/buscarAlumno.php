@@ -19,7 +19,7 @@ $tipoUsuario= $app->tipoUsuario2(App::nombreUsuario());//devuelve el tipo exacto
             <form method=\"POST\" action=\"buscarAlumno.php\">
             <div class=\"col-4 col-md-0 offset-md-4\">
                 <br/> 
-                <img src=\"../img/buscarEmail.png\" width=\"100\" height=\"100\"/>
+                <img src=\"../img/leerCorreo.png\" width=\"100\" height=\"100\"/>
             </div>                             
                 <div class=\"from-group\">
                     <label for=\"apellidos\">Apellidos:</label>
@@ -102,7 +102,7 @@ function listarFilasDeLaTablaEmp($list){
             "<td scope=\"row\">".$fila['nombre']."</td>".
             "<td scope=\"row\">".$fila['apellidos']."</td>".
             "<td scope=\"row\">".$fila['anioPromocion']."</td>".
-            "<td scope=\"row\"><a href='empresaEnviaCorreo.php?email=".$fila['email']."'>".$fila['email']."<img src=\"../img/enviarMensaje.png\"  width=\"27\" height=\"27\"/></a>"."</td>";
+            "<td scope=\"row\"><a href='empresaEnviaCorreo.php?email=".$fila['email']."'>".$fila['email']."<img src=\"../img/enviarMensaje.png\" width=\"27\" height=\"27\"/> </a>"."</td>";
             
         
         echo "</tr>";

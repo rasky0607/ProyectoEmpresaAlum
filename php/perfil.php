@@ -54,34 +54,34 @@ if(strcmp($tipoUsuario,'alumno')==0)
                     </div>
                     <div class=\"from-group\">
                         <label for=\"NombreAlum\">Nombre alumno:</label>
-                        <input id=\"NombreAlum\" name=\"NombreAlum\" onchange=\"function1() type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$nombre\" readonly>
+                        <input id=\"NombreAlum\" name=\"NombreAlum\"  type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$nombre\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"apellidos\">Apellidos:</label>
-                        <input id=\"apellidos\" name=\"apellidos\" onchange=\"function1() type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$apellidos\" readonly>
+                        <input id=\"apellidos\" name=\"apellidos\"  type=\"text\" requiered=\"requiered\" class=\"form-control\" value=\"$apellidos\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"email\">Email:</label>
-                        <input id=\"email\" name=\"email\" onchange=\"function1() type=\"email\"  value=\"$email\" requiered=\"requiered\" class=\"form-control\" readonly>
+                        <input id=\"email\" name=\"email\"  type=\"email\"  value=\"$email\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"anioPromocion\">Promocion del:</label>
-                        <input id=\"anioPromocion\" name=\"anioPromocion\" onchange=\"function1() type=\"number\"  value=\"$anioPromocion\" requiered=\"requiered\" class=\"form-control\" readonly>
+                        <input id=\"anioPromocion\" name=\"anioPromocion\"  type=\"number\"  value=\"$anioPromocion\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <div class=\"text-center\">
                     <hr/>
                     </br>
                     <label for=\"estadoLaboral\">Estado laboral:</label><br/>
-                    <input id=\"estadoLaboral\" name=\"estadoLaboral\" type=\"text\"  value=\"$estadoLaboral\" requiered=\"requiered\" class=\"form-control\" readonly=\"readonly\" readonly>
+                    <input id=\"estadoLaboral\" name=\"estadoLaboral\" type=\"text\"  value=\"$estadoLaboral\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>   
         
                     <div class=\"from-group\">
                         <label for=\"trabajaEn\">Trabajas en:</label>
-                        <input id=\"trabajaEn\" name=\"trabajaEn\" onchange=\"function1() type=\"text\"  value=\"$trabajaEn\" requiered=\"requiered\" class=\"form-control\" readonly>
+                        <input id=\"trabajaEn\" name=\"trabajaEn\"  type=\"text\"  value=\"$trabajaEn\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <div class=\"from-group\">
                         <label for=\"fechaContrato\">Fecha de contratación:</label>
-                        <input id=\"fechaContrato\" name=\"fechaContrato\" onchange=\"function1() type=\"date\"  value=\"$fechaContrato\" requiered=\"requiered\" class=\"form-control\" readonly>
+                        <input id=\"fechaContrato\" name=\"fechaContrato\"  type=\"date\"  value=\"$fechaContrato\" requiered=\"requiered\" class=\"form-control\" readonly>
                     </div>
                     <br/>
     

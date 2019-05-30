@@ -224,7 +224,7 @@ class Dao{
      function getCorresEnviados($emailUsuario){
         try
         {        
-            $sql="SELECT ".CCORREO_ID.",".CCORREO_DESTINATARIO.",".CCORREO_FECHA.",".CCORREO_ASUNTO." FROM ".TCORREO. " WHERE ".CCORREO_REMITENTE." LIKE '".$emailUsuario."'";
+            $sql="SELECT ".CCORREO_ID.",".CCORREO_REMITENTE.",".CCORREO_DESTINATARIO.",".CCORREO_FECHA.",".CCORREO_ASUNTO." FROM ".TCORREO. " WHERE ".CCORREO_REMITENTE." LIKE '".$emailUsuario."'";
             //echo $sql;
             $resultado=$this->conecxion->query($sql);                               
             return $resultado;        

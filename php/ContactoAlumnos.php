@@ -1,6 +1,13 @@
 <?php
+/*---------------------------
+Limpiar errores inecesario
+(solucion cutre a ciertas excepciones poco o nada relevantes para el funcionamiento)*/
+//error_reporting(E_ALL);
+//ini_set('display_errors', '0');
+/**----------------------------------- */
 //Un alumno contacta con uno o varios exalumnos
      include_once("app.php");
+     
      $app = new App();
      $app -> validateSession();
      App::print_head("Contactar con alumnos");
@@ -16,14 +23,24 @@
      
      listarFilasDeLaTablaAlum($list);
      $arrayemails=array();
-     //recogemos correos marcados
-     $arrayemails=$_POST['email'];
+  
+     /*IMPORTANTE:
+     Evitamos la lectura de datos al cargar la pagina por culpa del summit
+      que se ejecuta en la primera carga de la pagina*/
+     if(isset($_POST['email'])) //recogemos correos marcados
+     {
+        $arrayemails=$_POST['email'];
+     }
      //print_r($arrayemails);
  
 
-  
- $asunto=$_POST['asunto'];
- $contenido=$_POST['contenido'];
+     /*IMPORTANTE:
+     Evitamos la lectura de datos al cargar la pagina por culpa del summit
+      que se ejecuta en la primera carga de la pagina*/
+  if(isset($_POST['asunto'])){   
+    $asunto=$_POST['asunto'];
+    $contenido=$_POST['contenido'];
+  }
 //Realizamos inserciones
 if(isset($_POST['envio'])&& count($arrayemails)==0)
 {

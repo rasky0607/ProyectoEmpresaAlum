@@ -7,9 +7,7 @@ $nombreUsuario=App::nombreUsuario();
 //Preguntamos que tipo de usuario es para mostrar un nav u otro
 $app->getDao()->tipoUsuario(App::nombreUsuario());//Coloca un nav u otro segun el tipo de usuario
 echo"<h3 class=\"text-center\">Actualizar datos:</h3>";
-$m=3242;
 
-var_dump(strlen($m));
 $list = $app->perfilUsuario(App::nombreUsuario());
 
 //--Preparacion--//
@@ -58,14 +56,15 @@ echo "
         </div>
     </div>
 </div>";
-
+if(isset($_POST['NombreEmp']))
+{
   $usuarioEmp=$_POST['user'];
   $nombre=$_POST['NombreEmp'];
   $direccion=$_POST['direccion'];
   $telefono=$_POST['telefono'];
   $nombreContacto=$_POST['nombreContacto'];
-if($_POST['guardar'])
-{
+}
+
     if(!empty($usuarioEmp) &&!empty($nombre) &&!empty($direccion) &&!empty($telefono) &&!empty($nombreContacto))
     {
         if(strlen($telefono)==9)
@@ -83,8 +82,7 @@ if($_POST['guardar'])
 
     }else
     {
-        echo "<script type=\"text/javascript\"> alert('¡Debe rellenarse todos los campos!.');
-        </script>";
+        echo "<br> <p class=\"text-center\">Debe rellenarse todos los campos.</p>";
     }
-}
+
 ?>
