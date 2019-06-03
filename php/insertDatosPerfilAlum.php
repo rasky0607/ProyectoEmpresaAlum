@@ -109,7 +109,7 @@ else if(!empty($usuarioAlum) &&!empty($nombre) &&!empty($apellidos) &&!empty($an
 }
 else
 {
-    echo "<script type=\"text/javascript\"> alert('¡Los campos Nombre de alumno, Apellidos, Email y Año de promocion son obligatorios!.');
-    </script>";
+    echo "<br> <p class=\"text-center\">*Los campos Nombre de alumno, Apellidos, Email y Año de promocion son obligatorios.</p>";
+
 }
 ?>
